@@ -1,1 +1,4 @@
+Sitemap: https://team5857.tk/sitemap.xml
+
 User-agent: *
+Disallow:
