@@ -1,4 +1,4 @@
-Sitemap: https://team5857.tk/sitemap.xml
-
+Sitemap: https://team5857.tk/sitemap_index.xml
 User-agent: *
-Disallow:
+
+Allow: /
