@@ -38,9 +38,8 @@ function strap() {
 
 // Script by birbbbbbb
 
-// type 'birb' on your keyboard
-
 function birb() {
+	// type 'birb' on your keyboard
 	var key = [66, 73, 82, 66];
 	var ck = 0;
 	var max = key.length;
