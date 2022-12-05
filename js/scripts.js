@@ -69,7 +69,7 @@ function birb() {
 		}, 10300);
 		setTimeout(function () {
 			onscreen = false;
-		}, 10300);
+		}, 5000);
 	};
 
 	var record = function (e) {
