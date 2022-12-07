@@ -1187,6 +1187,7 @@ progress {
   padding: 3rem;
   margin: 0.5rem;
   margin-top: 60px;
+  border: 0.25rem solid rgba(255, 255, 255);
 }
 .cta .cta-inner:before {
   border-radius: 0.5rem;
@@ -1196,8 +1197,8 @@ progress {
   bottom: -0.5rem;
   left: -0.5rem;
   right: -0.5rem;
-  border: 0.25rem solid rgba(119, 198, 216, 0.85);
-  z-index: -1;
+  border: 0.25rem solid rgba(119, 198, 216);
+  z-index: 0.5;
 }
 
 .col {
@@ -12461,6 +12462,13 @@ header.masthead h1, header.masthead .h1 {
     height: auto;
     /* border: 10px solid rgba(119, 198, 216); */
     box-shadow: 0 0 0 5px rgba(119, 198, 216);
+    border: 5px solid rgba(255, 255, 255);
+  }
+  .img-fluid4 {
+    max-width: 80%;
+    height: auto;
+    /* border: 10px solid rgba(119, 198, 216); */
+    box-shadow: 0 0 0 5px rgba(100, 161, 157);
     border: 5px solid rgba(255, 255, 255);
   }
   .img-fluid2 {
