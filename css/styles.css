@@ -1177,6 +1177,29 @@ progress {
   margin-top: var(--bs-gutter-y);
 }
 
+.cta {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: transparent;
+}
+.cta .cta-inner {
+  /* position: relative; */
+  padding: 3rem;
+  margin: 0.5rem;
+  margin-top: 60px;
+}
+.cta .cta-inner:before {
+  border-radius: 0.5rem;
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  bottom: -0.5rem;
+  left: -0.5rem;
+  right: -0.5rem;
+  border: 0.25rem solid rgba(119, 198, 216, 0.85);
+  z-index: -1;
+}
+
 .col {
   flex: 1 0 0%;
 }
@@ -7977,6 +8000,9 @@ textarea.form-control-lg {
 .bg-faded {
   background-color: rgba(106, 211, 235);
 }
+.bg-faded2 {
+  background-color: rgba(119, 198, 216);
+}
 /*rgba(164, 222, 235, 0.8);*/
 
 .px-0 {
@@ -12149,7 +12175,7 @@ header.conhead h1, header.conhead .h1 {
 header.outhead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/Untitled80_20221106184821.jpeg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/skating.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -12429,6 +12455,13 @@ header.masthead h1, header.masthead .h1 {
   .img-fluid {
     max-width: 80%;
     height: auto;
+  }
+  .img-fluid3 {
+    max-width: 80%;
+    height: auto;
+    /* border: 10px solid rgba(119, 198, 216); */
+    box-shadow: 0 0 0 5px rgba(119, 198, 216);
+    border: 5px solid rgba(255, 255, 255);
   }
   .img-fluid2 {
     max-width: 100%;
