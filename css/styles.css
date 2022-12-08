@@ -110,12 +110,43 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   line-height: 1.2;
 }
 
-h1, .h1 {
+/* h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 2.5rem;
+  }
+} */
+h1::before {  
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+h1:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+h1::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  background: hsl(200 100% 80%);
+  z-index: -1;
+  transition: transform .3s ease;
+}
+
+h1 {
+  position: relative;
+  font-size: 5rem;
+}
+
+@media (orientation: landscape) {
+  body {
+    grid-auto-flow: column;
   }
 }
 
@@ -259,6 +290,11 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
 .img-fluid {
   max-width: 80%;
   height: auto;
+}
+.img-fluid5 {
+  max-width: 80%;
+  height: auto;
+  margin-left: 100px;
 }
 .img-fluid2 {
   max-width: 100%;
