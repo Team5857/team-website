@@ -291,11 +291,7 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   max-width: 80%;
   height: auto;
 }
-.img-fluid5 {
-  max-width: 80%;
-  height: auto;
-  margin-left: 100px;
-}
+
 .img-fluid2 {
   max-width: 100%;
   height: auto;
@@ -451,6 +447,87 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
+.slider-container {
+  /* background: linear-gradient(149deg, rgb(247, 0, 255) 0%, rgb(255, 145, 0) 100%); */
+  position: relative;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slider {
+  box-shadow: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 800px;
+  height: 700px;
+  margin: 20px;
+  text-align: center;
+  border-radius: 20px;
+  position: relative;
+}
+.slides {
+  display: flex;
+  overflow-x: scroll;
+  position: relative;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+.slide:nth-of-type(even) {
+  background-color: rgb(212, 249, 250);
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  height: 500px;
+  margin-right: 0px;
+  box-sizing: border-box;
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;;
+  transform-origin: center center;
+  transform: scale(1);
+  scroll-snap-align: center;
+}
+
+/* .slide__text {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: sans-serif;
+} */
+
+.check-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.check-list li {
+  position: relative;
+  list-style-type: none;
+  padding-left: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.check-list li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 5px;
+    height: 11px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #00a8a8;
+    transform-origin: bottom left;
+    transform: rotate(45deg);
+}
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;
@@ -1016,6 +1093,11 @@ progress {
   max-width: 100%;
   height: auto;
 }
+@media (max-width: 992) {
+  .imgtest{
+    left: 20px;
+  }
+}
 
 @media (min-width: 576px) {
   .container-sm, .container {
@@ -1209,6 +1291,14 @@ progress {
   width: 100%;
   max-width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+
+.row2 > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
 }
