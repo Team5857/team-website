@@ -447,59 +447,6 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
-.slider-container {
-  /* background: linear-gradient(149deg, rgb(247, 0, 255) 0%, rgb(255, 145, 0) 100%); */
-  position: relative;
-  margin: auto;
-  box-shadow: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.slider {
-  box-shadow: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  max-width: 800px;
-  height: 700px;
-  margin: 20px;
-  text-align: center;
-  border-radius: 20px;
-  position: relative;
-}
-.slides {
-  display: flex;
-  overflow-x: scroll;
-  position: relative;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-}
-.slide:nth-of-type(even) {
-  background-color: rgb(212, 249, 250);
-}
-
-.slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  width: 100%;
-  height: 500px;
-  margin-right: 0px;
-  box-sizing: border-box;
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;;
-  transform-origin: center center;
-  transform: scale(1);
-  scroll-snap-align: center;
-}
-
-/* .slide__text {
-  font-size: 40px;
-  font-weight: bold;
-  font-family: sans-serif;
-} */
 
 .check-list {
   margin: 0;
@@ -12862,7 +12809,7 @@ a.btn.btn-dark {
 header.sponhead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/IMG_5007.jpeg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/oldteam.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -12889,4 +12836,45 @@ header.sponhead h1, header.sponhead .h1 {
   header.sponhead h1, header.sponhead .h1 {
     font-size: 3.5rem;
   }
+}
+
+.card {
+  margin: 10px 10px;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+/* Flip Cards CSS */
+.card-container {
+  display: grid;
+  perspective: 700px;
+  width: 30rem;
+}
+
+.card-flip {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas: "frontAndBack";
+  transform-style: preserve-3d;
+  transition: all 0.7s ease;
+}
+
+.card-flip div {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.front {
+  grid-area: frontAndBack;
+}
+
+.back {
+  grid-area: frontAndBack;
+  transform: rotateX(-180deg);
+}
+
+input[type='checkbox']:checked+.card-container .card-flip {
+  transform: rotateX(180deg);
 }
