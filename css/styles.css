@@ -12875,3 +12875,7 @@ input[type='checkbox'] {
 input[type='checkbox']:checked+.card-container .card-flip {
   transform: rotateX(180deg);
 }
+
+.typed-cursor {
+  display: none;
+}

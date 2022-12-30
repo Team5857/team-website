@@ -98,6 +98,16 @@ function birb() {
 	init(data);
 }
 
+if (typeof Typed !== "undefined") {
+	var typed = new Typed("#typed", {
+		strings: ["Walnut Valley Robotics", "Team 5857"],
+		smartBackspace: true,
+		typeSpeed: 50,
+      	backSpeed: 25,
+      	backDelay: 1000,
+		loop: true
+	});
+}
 
 //init all functions
 birb();
