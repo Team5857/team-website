@@ -12034,7 +12034,7 @@ hr.divider-light {
  }
  
  .hover-underline-animation:hover:after {
-   transform: scaleX(1);
+   transform: scaleX(1) translateY(5px);
    transform-origin: bottom left;
  }
   .projects-section .project-text {

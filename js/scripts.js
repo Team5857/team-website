@@ -104,7 +104,7 @@ if (typeof Typed !== "undefined") {
 		smartBackspace: true,
 		typeSpeed: 50,
       	backSpeed: 25,
-      	backDelay: 1000,
+      	backDelay: 2000,
 		loop: true
 	});
 }
