@@ -12961,3 +12961,16 @@ input[type='checkbox']:checked+.card-container .card-flip {
 .typed-cursor {
   display: none;
 }
+
+.glide__slide > a >  img {
+  width: 50%;
+  text-align: center;
+}
+
+i.bi-heart-fill {
+  background: -webkit-linear-gradient(red, FireBrick);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: darkred;
+}

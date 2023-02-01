@@ -4,130 +4,140 @@
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
  */
 
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        } else {
+            reveals[i].classList.remove("active");
+        }
+    }
+}
+
 function strap() {
-	// Navbar shrink function
-	var navbarShrink = function () {
-		const navbarCollapsible = document.body.querySelector("#mainNav");
-		if (!navbarCollapsible) {
-			return;
-		}
-		if (window.scrollY === 0) {
-			navbarCollapsible.classList.remove("navbar-shrink");
-		} else {
-			navbarCollapsible.classList.add("navbar-shrink");
-		}
-	};
+    // Navbar shrink function
+    var navbarShrink = function () {
+        const navbarCollapsible = document.body.querySelector("#mainNav");
+        if (!navbarCollapsible) {
+            return;
+        }
+        if (window.scrollY === 0) {
+            navbarCollapsible.classList.remove("navbar-shrink");
+        } else {
+            navbarCollapsible.classList.add("navbar-shrink");
+        }
+    };
 
-	function reveal() {
-		var reveals = document.querySelectorAll(".reveal");
-	  
-		for (var i = 0; i < reveals.length; i++) {
-		  var windowHeight = window.innerHeight;
-		  var elementTop = reveals[i].getBoundingClientRect().top;
-		  var elementVisible = 150;
-	  
-		  if (elementTop < windowHeight - elementVisible) {
-			reveals[i].classList.add("active");
-		  } else {
-			reveals[i].classList.remove("active");
-		  }
-		}
-	  }
-	  
-	  window.addEventListener("scroll", reveal);
-	  
+    // Shrink the navbar
+    navbarShrink();
 
-	// Shrink the navbar
-	navbarShrink();
+    // Shrink the navbar when page is scrolled
+    document.addEventListener("scroll", navbarShrink);
 
-	// Shrink the navbar when page is scrolled
-	document.addEventListener("scroll", navbarShrink);
-
-	// Collapse responsive navbar when toggler is visible
-	const navbarToggler = document.body.querySelector(".navbar-toggler");
-	const responsiveNavItems = [].slice.call(document.querySelectorAll("#navbarResponsive .nav-link"));
-	responsiveNavItems.map(function (responsiveNavItem) {
-		responsiveNavItem.addEventListener("click", () => {
-			if (window.getComputedStyle(navbarToggler).display !== "none") {
-				navbarToggler.click();
-			}
-		});
-	});
+    // Collapse responsive navbar when toggler is visible
+    const navbarToggler = document.body.querySelector(".navbar-toggler");
+    const responsiveNavItems = [].slice.call(document.querySelectorAll("#navbarResponsive .nav-link"));
+    responsiveNavItems.map(function (responsiveNavItem) {
+        responsiveNavItem.addEventListener("click", () => {
+            if (window.getComputedStyle(navbarToggler).display !== "none") {
+                navbarToggler.click();
+            }
+        });
+    });
 }
 
 // Script by birbbbbbb
 
 function birb() {
-	// type 'birb' on your keyboard
-	var key = [66, 73, 82, 66];
-	var ck = 0;
-	var max = key.length;
-	var onscreen = false;
+    // type 'birb' on your keyboard
+    var key = [66, 73, 82, 66];
+    var ck = 0;
+    var max = key.length;
+    var onscreen = false;
 
-	var unicorn = function () {
-		var img = new Image();
-		img.src = data;
-		img.style.pointerEvents = "none";
-		img.style.width = "600px";
-		img.style.height = "338px";
-		img.style.transition = "13s all";
-		img.style.position = "fixed";
-		img.style.right = "-374px";
-		// img.style.bottom = 'calc(-50% + 280px)';
-		img.style.top = "100px";
-		img.style.zIndex = 999999;
+    var unicorn = function () {
+        var img = new Image();
+        img.src = data;
+        img.style.pointerEvents = "none";
+        img.style.width = "600px";
+        img.style.height = "338px";
+        img.style.transition = "13s all";
+        img.style.position = "fixed";
+        img.style.right = "-374px";
+        // img.style.bottom = 'calc(-50% + 280px)';
+        img.style.top = "100px";
+        img.style.zIndex = 999999;
 
-		document.body.appendChild(img);
+        document.body.appendChild(img);
 
-		window.setTimeout(function () {
-			img.style.right = "calc(100% + 500px)";
-		}, 50);
+        window.setTimeout(function () {
+            img.style.right = "calc(100% + 500px)";
+        }, 50);
 
-		window.setTimeout(function () {
-			img.parentNode.removeChild(img);
-		}, 10300);
-		setTimeout(function () {
-			onscreen = false;
-		}, 5000);
-	};
+        window.setTimeout(function () {
+            img.parentNode.removeChild(img);
+        }, 10300);
+        setTimeout(function () {
+            onscreen = false;
+        }, 5000);
+    };
 
-	var record = function (e) {
-		console.log(e.key, ck);
-		if (e.which === key[ck]) {
-			ck++;
-		} else {
-			ck = 0;
-		}
+    var record = function (e) {
+        console.log(e.key, ck);
+        if (e.which === key[ck]) {
+            ck++;
+        } else {
+            ck = 0;
+        }
 
-		if (ck >= max && !onscreen) {
-			onscreen = true;
-			unicorn();
-			ck = 0;
-		} else if (onscreen) {
-			ck = 0;
-		}
-	};
+        if (ck >= max && !onscreen) {
+            onscreen = true;
+            unicorn();
+            ck = 0;
+        } else if (onscreen) {
+            ck = 0;
+        }
+    };
 
-	var init = function (data) {
-		document.addEventListener("keyup", record);
-	};
+    var init = function (data) {
+        document.addEventListener("keyup", record);
+    };
 
-	var data = "https://raw.githubusercontent.com/birbbbbbbie/birbbbbbbie.github.io/main/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
+    var data = "https://raw.githubusercontent.com/birbbbbbbie/birbbbbbbie.github.io/main/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
 
-	init(data);
+    init(data);
 }
 
 if (typeof Typed !== "undefined") {
-	var typed = new Typed("#typed", {
-		strings: ["Walnut Valley Robotics", "Team 5857"],
-		smartBackspace: true,
-		typeSpeed: 50,
-      	backSpeed: 25,
-      	backDelay: 2000,
-		loop: true
-	});
+    let typed = new Typed("#typed", {
+        strings: ["Walnut Valley Robotics", "Team 5857"],
+        smartBackspace: true,
+        typeSpeed: 50,
+        backSpeed: 25,
+        backDelay: 2000,
+        loop: true,
+    });
 }
+
+if (typeof Glide != "undefined") {
+    let glide = new Glide(".glide", {
+        type: "carousel",
+        startAt: 0,
+        perView: 3,
+        autoplay: 4500,
+        focusAt: "center",
+    }).mount({});
+}
+
+// Change the footer year
 
 //init all functions
 birb();
 strap();
+window.addEventListener("scroll", reveal);
