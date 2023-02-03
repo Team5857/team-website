@@ -128,9 +128,9 @@ if (typeof Typed !== "undefined") {
 if (typeof Glide != "undefined") {
     let glide = new Glide(".glide", {
         type: "carousel",
-        startAt: 0,
+        startAt: 1,
         perView: 3,
-        autoplay: 4500,
+        autoplay: 2500,
         focusAt: "center",
     }).mount({});
 }
