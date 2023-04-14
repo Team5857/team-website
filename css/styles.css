@@ -12098,13 +12098,13 @@ hr.divider-light {
 
  .hover-underline-animation {
    display: inline-block;
-   position: relative; top:-3px;
+   position: relative; top:-2px;
    color: #0087ca;
  }
  
  .hover-underline-animation:after {
    content: '';
-   position: absolute; top:25px;
+   position: absolute; top:35px;
    width: 100%;
    transform: scaleX(0);
    height: 2px;
@@ -12116,7 +12116,7 @@ hr.divider-light {
  }
  
  .hover-underline-animation:hover:after {
-   transform: scaleX(1) translateY(5px);
+   transform: scaleX(1) translateY(0px);
    transform-origin: bottom left;
  }
   .projects-section .project-text {
