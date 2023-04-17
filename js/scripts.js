@@ -20,6 +20,27 @@ function reveal() {
     }
 }
 
+if (typeof Typed !== "undefined") {
+    let typed = new Typed("#typed", {
+        strings: ["Walnut Valley Robotics", "Team 5857"],
+        smartBackspace: true,
+        typeSpeed: 50,
+        backSpeed: 25,
+        backDelay: 2000,
+        loop: true,
+    });
+}
+
+if (typeof Glide != "undefined") {
+    let glide = new Glide(".glide", {
+        type: "carousel",
+        startAt: 1,
+        perView: 3,
+        autoplay: 2500,
+        focusAt: "center",
+    }).mount({});
+}
+
 function strap() {
     // Navbar shrink function
     var navbarShrink = function () {
@@ -39,7 +60,7 @@ function strap() {
 
     // Shrink the navbar when page is scrolled
     document.addEventListener("scroll", navbarShrink);
-
+    
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector(".navbar-toggler");
     const responsiveNavItems = [].slice.call(document.querySelectorAll("#navbarResponsive .nav-link"));
@@ -112,27 +133,6 @@ function birb() {
     var data = "https://raw.githubusercontent.com/birbbbbbbie/birbbbbbbie.github.io/main/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
 
     init(data);
-}
-
-if (typeof Typed !== "undefined") {
-    let typed = new Typed("#typed", {
-        strings: ["Walnut Valley Robotics", "Team 5857"],
-        smartBackspace: true,
-        typeSpeed: 50,
-        backSpeed: 25,
-        backDelay: 2000,
-        loop: true,
-    });
-}
-
-if (typeof Glide != "undefined") {
-    let glide = new Glide(".glide", {
-        type: "carousel",
-        startAt: 1,
-        perView: 3,
-        autoplay: 2500,
-        focusAt: "center",
-    }).mount({});
 }
 
 // Change the footer year

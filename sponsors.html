@@ -38,6 +38,9 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3/dist/css/glide.core.min.css">
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="css/styles.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 
 <body id="page-top">
@@ -89,12 +92,12 @@
 		<div class="container px-4 px-lg-5">
 			<!-- Featured Project Row-->
 			<div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-				<div class="col-xl-8 col-lg-7"><img
+				<div data-aos="fade-up" class="col-xl-8 col-lg-7"><img
 						class="img-fluid mb-3 mb-lg-0 img-fluid4 animate__animated animate__fadeInLeft animate__delay-2s"
-						src="assets/img/placeholder.png" alt="..." style="width: 100%" /></div>
+						src="assets/img/pitcrew.jpg" alt="..." style="width: 100%" /></div>
 				<div class="col-xl-4 col-lg-5">
 					<div
-						class="featured-text text-center text-lg-left animate__animated animate__fadeInRight animate__delay-2s">
+					data-aos="fade-left" class="featured-text text-center text-lg-left animate__animated animate__fadeInRight animate__delay-2s">
 						<p class="text-primary-75 mb-4">Our goal as a team is to provide an opportunity for students to improve and practice these skills for their futures. By supporting us, you're ensuring that we are able to continue inspiring students to pursue mechanical, electrical, design, and programming fields in the future.
 						</p>
 					</div>
@@ -143,7 +146,7 @@
 			End Card 1
 		</div>
 	</section> -->
-	<section class="title-section">
+	<section data-aos="fade-up"class="title-section">
 		<h3 class="text-center">Our Current Sponsors</h3>
 		<hr class="divider" />
 		<div class="glide">
@@ -178,20 +181,23 @@
 			</div>
 		</div>
 	</section><br>
-	<section class="title-section bg-light">
+	<section data-aos="fade-up" class="title-section bg-light">
 		<h3 class="text-center">Interested in Sponsoring Us?</h3>
 		<hr class="divider" /><br>
 		<div class="intro-button mx-auto text-center"><a class="btn btn-primary btn-xl"
 			href="mailto:walnutvalleyrobotics@gmail.com">Get Started!</a></div>
 </div>
 	</section>
-	<div class = "text-center">
+	<section>
+	<div data-aos="fade-up" class = "text-center">
 		
 		<object data="assets/Sponsorship Packet Updated 2023.pdf" type="application/pdf" width="90%" height="700px">
 			<p>Unable to display PDF file. <a href="assets/Sponsorship Packet Updated 2023.pdf">Download</a> instead.</p>
 		  </object>
-		</div>
+	</div>
+	</section>
 		<br>
+
 	<!-- <section class="title-section bg-light">
 		<h3 class="text-center">We <i class="bi bi-heart-fill"></i> Locals</h3>
 		<hr class="divider" />
@@ -274,6 +280,9 @@
 		</div>
 	</div>
 	<!-- Core theme JS-->
+	<script>
+		AOS.init();
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3/dist/glide.min.js"></script>
 	<script src="js/scripts.js"></script>

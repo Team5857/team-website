@@ -37,6 +37,9 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="css/styles.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 
 <body id="page-top">
@@ -88,7 +91,94 @@
 			</div>
 		</div>
 	</header>
+
 	<section class="title-section bg-light">
+		<h3 class="text-center">Community Events</h3>
+		<hr class="divider" />
+		</section>
+<section data-aos="fade-up">
+	<!-- Slideshow container -->
+<div class="slideshow-container">
+
+	<!-- Full-width images with number and caption text -->
+	<div class="mySlides fade">
+	  <div class="numbertext">1 / 4</div>
+	  <div class="container px-5 my-5">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="assets/img/nats.jpg" alt="..." />
+			</div>
+			<div class="col-lg-6">
+				<h4 class="fw-bolder">NAT's Children Day</h4>
+				<p class="fw-normal text-muted mb-0 smaller">On December 14, 2019, we were invited to attend NATS Children’s Day. We displayed our 2019 Offseason Robot, made a few demos, and also participated in a Q&A session.
+				</p>
+			</div>
+		</div>
+	</div>
+	</div>
+  
+	<div class="mySlides fade">
+	  <div class="numbertext">2 / 4</div>
+	  <div class="container px-5 my-5">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0"
+					src="assets/img/ocfair.png" alt="..." /></div>
+			<div class="col-lg-6">
+				<h4 class="fw-bolder">The OC Fair</h4>
+				<p class="smaller fw-normal text-muted mb-0">For the past few years, we have been participating in the Orange County Fair. Each year, we try to bring something different to interact with our audience. This past year, our team was able to construct a mechanized pong table. Fairgoers were able to play a unique game of ping pong—instead of using traditional paddles to hit the ball back and forth, they were able to control the game using an Xbox controller. The controllers connected to a gear that moved the paddle left and right. Safe to say, it was a hit and we were able to show spectators and players alike the amazing things that can be done with STEM.
+				</p>
+			</div>
+		</div>
+	</div>
+	</div>
+  
+	<div class="mySlides fade">
+	  <div class="numbertext">3 / 4</div>
+	  <div class="container px-5 my-5">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="assets/img/fll.jpg" alt="..." />
+			</div>
+			<div class="col-lg-6">
+				<h4 class="fw-bolder">FIRST LEGO League</h4>
+				<p class="fw-normal text-muted mb-0 smaller">	We are actively planning on mentoring more FLL and FTC teams during their qualifying season to encourage the growth of their knowledge and passion for robotics. It is really important for us to cultivate an excitement towards robotics in younger children, as it will allow them to continue pursuing their passion as they mature. Our most recent FLL tournament took place in December 2019 at the Walnut Teen Center. The event was a success and we look forward to hosting future tournaments so that we can not only encourage others to pursue FIRST, but to also get to know members in our community and create lasting bonds.
+
+				</p>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="mySlides fade">
+		<div class="numbertext">4 / 4</div>
+		<div class="container px-5 my-5">
+		  <div class="row gx-5 align-items-center">
+			  <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0"
+					  src="assets/img/ftc.JPG" alt="..." /></div>
+			  <div class="col-lg-6">
+				  <h4 class="fw-bolder">FIRST Tech Challenge</h4>
+				  <p class="smaller fw-normal text-muted mb-0">	Walnut Valley Robotics ran 4 FTC qualifying matches at South Pointe Middle School. The FTC division is the middle ground between FLL and FRC, but contains business aspects, and intensive robot building of FRC. In preparation for these events, the public relations subdivision of our team visited the site numerous times to meet with the school principal, janitor, and discuss logistics. Additionally, we intensely worked with the district secretary to manage costs and insurance. Without the help of the community and our fundraisers, the team would not have been able to pay for the costs of the venue and insurance.
+
+				  </p>
+			  </div>
+		  </div>
+	  </div>
+	  </div>
+</section>
+  
+	<!-- Next and previous buttons -->
+	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+	<span class="dot" onclick="currentSlide(1)"></span>
+	<span class="dot" onclick="currentSlide(2)"></span>
+	<span class="dot" onclick="currentSlide(3)"></span>
+	<span class="dot" onclick="currentSlide(4)"></span>
+  </div>
+
+	<!-- <section class="title-section bg-light">
 		<h3 class="text-center">Community Events</h3>
 		<hr class="divider" />
 			<div class="container px-5 my-5">
@@ -97,7 +187,7 @@
 					</div>
 					<div class="col-lg-6">
 						<h4 class="fw-bolder">NAT's Children Day</h4>
-						<p class="fw-normal text-muted mb-0 smaller">On December 14, 2019, we were invited to attend NATS Children’s Day. We displayed our 2019 Offseason Robot, made a few demos, and also participated in a Q&A session. Here are some pictures:
+						<p class="fw-normal text-muted mb-0 smaller">On December 14, 2019, we were invited to attend NATS Children’s Day. We displayed our 2019 Offseason Robot, made a few demos, and also participated in a Q&A session.
 						</p>
 					</div>
 				</div>
@@ -113,8 +203,8 @@
 					</div>
 				</div>
 			</div>
-	</section>
-	<section class="title-section">
+	</section> -->
+	<section data-aos="fade-up" class="title-section">
 		<h3 class="text-center">Roboghana</h3>
 		<hr class="divider" />
 			<div class="container px-5 my-5">
@@ -129,7 +219,7 @@
 				</div>
 			</div>
 	</section>
-	<section class="title-section bg-light">
+	<!-- <section class="title-section bg-light">
 		<h3 class="text-center">FLL Tournaments</h3>
 		<hr class="divider" />
 			<div class="container px-5 my-5">
@@ -145,7 +235,7 @@
 					</div>
 				</div>
 			</div>
-	</section>
+	</section> -->
 	<!-- <section class="page-section">
 			<div class="container">
 				<div class="product-item">
@@ -260,6 +350,39 @@
 		</div>
 	</div>
 	<!-- Core theme JS-->
+	<script>
+		AOS.init();
+	</script>
+	<script>
+	
+	
+	
+	let slideIndex = 1;
+	showSlides(slideIndex);
+	
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+	
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+	
+	function showSlides(n) {
+	  let i;
+	  let slides = document.getElementsByClassName("mySlides");
+	  let dots = document.getElementsByClassName("dot");
+	  if (n > slides.length) {slideIndex = 1}    
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none";  
+	  }
+	  for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";  
+	  dots[slideIndex-1].className += " active";
+	}</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="js/scripts.js"></script>
 </body>
