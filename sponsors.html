@@ -191,20 +191,35 @@
 					href="mailto:walnutvalleyrobotics@gmail.com">Get Started!</a></div>
 	</div>
 	</section>
-	<section>
-		<div data-aos="fade-up" class="text-center">
+	<section class="bg-light">
+		<div data-aos="fade-up">
 
 			<!-- <object data="assets/Walnut Valley Robotics Sponsorship Packet.pdf" type="application/pdf" width="90%" height="700px">
 				<p>Unable to display PDF file. <a href="assets/Walnut Valley Robotics Sponsorship Packet.pdf">Download</a>
 					instead.</p>
 			</object> -->
-			<object data="assets/Walnut Valley Robotics Sponsorship Packet.pdf" type="application/pdf" frameborder="0" width="90%" height="700px" style="padding: 20px;">
-				<embed src="assets/Walnut Valley Robotics Sponsorship Packet.pdf" width="90%" height="700px"/> 
-			</object>
+			<!-- <object data="assets/Walnut Valley Robotics Sponsorship Packet.pdf" type="application/pdf" frameborder="0"
+				width="90%" height="700px" style="padding: 20px;">
+				<embed src="assets/Walnut Valley Robotics Sponsorship Packet.pdf" width="90%" height="700px" />
+			</object> -->
+			<div id="app">
+
+			</div>
+		</div>
+		<div class="text-center" id="controls">
+			<button type="button" class="btn btn-primary btn-xl" id="prev"><i class="bi bi-arrow-left"></i></button>
+			<span class="text-primary-75" id="pages"></span>
+			<button type="button" class="btn btn-primary btn-xl" id="next"><i class="bi bi-arrow-right"></i></button>
+		</div>
+		<div class="text-center">
+			<iframe id="mobilePDF"
+				src="https://docs.google.com/viewer?url=https://team5857.tk/assets/Walnut%20Valley%20Robotics%20Sponsorship%20Packet.pdf&amp;embedded=true"
+				style="width: 100%;height: 700px; display: none;" frameborder="0"></iframe>
+			</p><a class="btn btn-primary btn-xl my-4"
+				href="assets/Walnut Valley Robotics Sponsorship Packet.pdf" download>Download
+				PDF</a>
 		</div>
 	</section>
-	<br>
-
 	<!-- <section class="title-section bg-light">
 		<h3 class="text-center">We <i class="bi bi-heart-fill"></i> Locals</h3>
 		<hr class="divider" />
@@ -264,34 +279,15 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
-	<div class="modal fade" id="credits" tabindex="-1" aria-labelledby="creditsLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h3 class="modal-title" id="creditsLabel">Credits</h3>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<h4>All Rights Reserved</h4>
-					<br>
-					<b>Photography, Branding, Initial Code</b>
-					<br>
-					<a href="https://github.com/birbbbbbbie">birbbbbbbie</a>: Birb, Swerve, and more!
-					<br>
-					<b>Organization, Formatting, Layout</b>
-					<br>
-					<a href="https://github.com/BetaTester41">BetaTester41</a>: Gotta test 'em all!
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- Core theme JS-->
 	<script>
 		AOS.init();
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3/dist/glide.min.js"></script>
+	<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/gh/theproductiveprogrammer/flipbook-viewer@master/dist/flipbook-viewer.js"></script>
 	<script src="js/scripts.js"></script>
 </body>
 

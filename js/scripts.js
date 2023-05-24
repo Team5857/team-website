@@ -38,13 +38,127 @@ if (typeof Glide != "undefined") {
         perView: 3,
         autoplay: 2500,
         focusAt: "center",
+        breakpoints: {
+            800: {
+                perView: 1,
+            },
+            1024: {
+                perView: 2,
+            }
+        }
     }).mount({});
 }
 
-function strap() {
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector("#mainNav");
+if (typeof window["pdfjs-dist/build/pdf"] != "undefined") {
+    function book(pdflink, cb) {
+        var PDFJS = window["pdfjs-dist/build/pdf"];
+        PDFJS.GlobalWorkerOptions.workerSrc = "//mozilla.github.io/pdf.js/build/pdf.worker.js";
+
+        const cache = [];
+
+        PDFJS.getDocument(pdflink)
+            .promise.then((pdf) => {
+                warm_cache_1(pdf, 1);
+                cb(null, {
+                    pdf,
+                    numPages: () => pdf.numPages,
+                    getPage: (n, cb) => get_page_1(pdf, n, cb),
+                });
+            })
+            .catch((err) => cb(err || "pdf parsing failed"));
+
+        function warm_cache_1(pdf, n) {
+            if (n <= pdf.numPages) get_page_1(pdf, n, () => warm_cache_1(pdf, n + 1));
+        }
+
+        function get_page_1(pdf, n, cb) {
+            if (!n || n > pdf.numPages) return cb();
+            if (cache[n]) return cb(null, cache[n]);
+            
+            pdf.getPage(n)
+            .then((page) => {
+                const scale = 1.2;
+                const viewport = page.getViewport({
+                    scale
+                });
+                
+                // Support HiDPI-screens.
+                const outputScale = 1;
+                const canvas = document.createElement("canvas");
+                canvas.width = Math.floor(viewport.width * outputScale);
+                    canvas.height = Math.floor(viewport.height * outputScale);
+                    canvas.style.width = Math.floor(viewport.width) + "px";
+                    canvas.style.height = Math.floor(viewport.height) + "px";
+                    
+                    const transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null;
+                    
+                    const context = canvas.getContext("2d");
+                    const renderContext = {
+                        canvasContext: context,
+                        transform,
+                        viewport,
+                    };
+                    page.render(renderContext)
+                    .promise.then(() => {
+                        const img = new Image();
+                        img.src = canvas.toDataURL();
+                        img.addEventListener(
+                            "load",
+                            () => {
+                                cache[n] = {
+                                    img,
+                                    num: n,
+                                    width: img.width,
+                                    height: img.height,
+                                };
+                                cb(null, cache[n]);
+                            },
+                            false
+                            );
+                        })
+                        .catch((err) => cb(err));
+                    })
+                    .catch((err) => cb(err));
+                }
+            }
+
+            function main() {
+                const opts = {
+                    width: window.screen.width,
+                    height: window.screen.height*.75,
+                    backgroundColor: "#f8f9fa"
+                };
+                
+                const app = document.getElementById("app");
+                const next = document.getElementById("next");
+                const prev = document.getElementById("prev");
+                // const zoom = document.getElementById("zoom");
+                
+                book("assets/Walnut Valley Robotics Sponsorship Packet.pdf", (err, book) => {
+                    if (err) console.error(err);
+                    else
+                    flipbook.init(book, app, opts, (err, viewer) => {
+                        if (err) return console.error(err);
+                        
+                        viewer.on("seen", (n) => (document.getElementById("pages").innerHTML = n + " / " + book.numPages()));
+                        next.onclick = () => viewer.flip_forward();
+                        prev.onclick = () => viewer.flip_back();
+                        // zoom.onclick = () => viewer.zoom();
+                    });
+                });
+            }
+            if (window.screen.width < 768) {
+                document.getElementById("controls").style.display = "none";
+                document.getElementById("mobilePDF").style.display = "block";
+            } else {
+                main();
+            }
+        }
+        
+        function strap() {
+            // Navbar shrink function
+            var navbarShrink = function () {
+                const navbarCollapsible = document.body.querySelector("#mainNav");
         if (!navbarCollapsible) {
             return;
         }
@@ -54,13 +168,13 @@ function strap() {
             navbarCollapsible.classList.add("navbar-shrink");
         }
     };
-
+    
     // Shrink the navbar
     navbarShrink();
-
+    
     // Shrink the navbar when page is scrolled
     document.addEventListener("scroll", navbarShrink);
-    
+
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector(".navbar-toggler");
     const responsiveNavItems = [].slice.call(document.querySelectorAll("#navbarResponsive .nav-link"));
@@ -129,9 +243,9 @@ function birb() {
     var init = function (data) {
         document.addEventListener("keyup", record);
     };
-    
+
     var data = "https://raw.githubusercontent.com/Team5857/team-website/main/assets/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
-//     var data = "https://raw.githubusercontent.com/birbbbbbbie/birbbbbbbie.github.io/main/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
+    //     var data = "https://raw.githubusercontent.com/birbbbbbbie/birbbbbbbie.github.io/main/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
 
     init(data);
 }
