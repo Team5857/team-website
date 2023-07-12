@@ -14304,7 +14304,7 @@ header.hhead .h1 {
   }
 }
 
-a.btn.btn-dark {
+a.btn.btn-dark, a.btn.btn-primary {
   margin: 1rem 2rem;
 }
 

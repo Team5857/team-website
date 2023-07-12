@@ -41,9 +41,6 @@ if (typeof Glide != "undefined") {
         breakpoints: {
             800: {
                 perView: 1,
-            },
-            1024: {
-                perView: 2,
             }
         }
     }).mount({});
@@ -52,7 +49,7 @@ if (typeof Glide != "undefined") {
 if (typeof window["pdfjs-dist/build/pdf"] != "undefined") {
     function book(pdflink, cb) {
         var PDFJS = window["pdfjs-dist/build/pdf"];
-        PDFJS.GlobalWorkerOptions.workerSrc = "//mozilla.github.io/pdf.js/build/pdf.worker.js";
+        PDFJS.GlobalWorkerOptions.workerSrc = "https://mozilla.github.io/pdf.js/build/pdf.worker.js";
 
         const cache = [];
 
