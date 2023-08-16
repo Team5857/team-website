@@ -1,4 +1,11 @@
+# Index All pages
 User-agent: *
 Allow: /
+# Don't index our assets!
+User-agent: *
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+Disallow: /designs/
 
 Sitemap: https://team5857.tk/sitemap.xml
