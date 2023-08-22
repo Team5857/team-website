@@ -1,8 +1,7 @@
-# Index All pages
 User-agent: *
+# Index All pages
 Allow: /
 # Don't index our assets!
-User-agent: *
 Disallow: /assets/
 Disallow: /css/
 Disallow: /js/
