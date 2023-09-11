@@ -123,7 +123,7 @@ if (typeof window["pdfjs-dist/build/pdf"] != "undefined") {
                 const opts = {
                     width: window.screen.width,
                     height: window.screen.height*.75,
-                    backgroundColor: "#f8f9fa"
+                    backgroundColor: window.getComputedStyle(document.getElementsByTagName('footer')[0]).backgroundColor
                 };
                 
                 const app = document.getElementById("app");

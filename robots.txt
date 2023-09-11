@@ -6,5 +6,6 @@ Disallow: /assets/
 Disallow: /css/
 Disallow: /js/
 Disallow: /designs/
+Disallow: /cdn-cgi/
 
 Sitemap: https://team5857.tk/sitemap.xml
