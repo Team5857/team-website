@@ -121,7 +121,7 @@ if (typeof window["pdfjs-dist/build/pdf"] != "undefined") {
 
             function main() {
                 const opts = {
-                    width: window.screen.width,
+                    width: window.screen.width*.99,
                     height: window.screen.height*.75,
                     backgroundColor: window.getComputedStyle(document.getElementsByTagName('footer')[0]).backgroundColor
                 };
@@ -144,8 +144,9 @@ if (typeof window["pdfjs-dist/build/pdf"] != "undefined") {
                     });
                 });
             }
-            if (window.screen.width < 768) {
+            if (window.screen.width*.99 < 768) {
                 document.getElementById("controls").style.display = "none";
+                document.getElementById("mobilePDF").src = "https://docs.google.com/viewer?url=https://wvr5857.org/assets/Walnut%20Valley%20Robotics%20Sponsorship%20Packet.pdf&embedded=true";
                 document.getElementById("mobilePDF").style.display = "block";
             } else {
                 main();
@@ -241,7 +242,7 @@ function birb() {
         document.addEventListener("keyup", record);
     };
 
-    var data = "https://raw.githubusercontent.com/Team5857/team-website/main/assets/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
+    var data = "/assets/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
     //     var data = "https://raw.githubusercontent.com/birbbbbbbie/birbbbbbbie.github.io/main/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
 
     init(data);
