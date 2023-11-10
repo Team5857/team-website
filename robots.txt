@@ -8,4 +8,4 @@ Disallow: /js/
 Disallow: /designs/
 Disallow: /cdn-cgi/
 
-Sitemap: https://team5857.tk/sitemap.xml
+Sitemap: https://wvr5857.org/sitemap.xml

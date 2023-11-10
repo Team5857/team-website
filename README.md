@@ -9,4 +9,4 @@ The source code to our team website
 - [ ] Bro we need to dedupe the css file...
 - [ ] SEO not working... idk why.
 
-&copy; Copyright Walnut Valley Robotics 2022, All Right Reserved.
+&copy; Copyright Walnut Valley Robotics 2022-2023, All Right Reserved.
