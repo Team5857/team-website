@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- costume css -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/kubil-ismail/Pdf-Flipbook@master/css/flipbook.style.css">
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Include JS -->
+    <script src="https://cdn.jsdelivr.net/gh/kubil-ismail/Pdf-Flipbook@master/js/flipbook.min.js"></script>
+
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function () {
+            $("#read").flipBook({
+                //Layout Setting
+                pdfUrl: '/assets/Walnut Valley Robotics Sponsorship Packet.pdf',
+                layout: 4, // or 2
+                // BTN SETTING
+                btnShare: { enabled: false },
+                btnPrint: {
+                    hideOnMobile: true
+                },
+                btnDownloadPages: {
+                    enabled: false,
+                },
+                skinColor: 'var(--bs-primary)',
+                sideBtnSize: 40,
+                sideBtnBackground: "rgba(0,0,0,.7)",
+                sideBtnColor: "var(--bs-primary)",
+                btnSound: {
+                    enabled: false
+                },
+                sound: false,
+                doubleClickZoomDisabled: true,
+                zoomMin: 1,
+                zoomMax2: 1,
+                btnZoomIn: {
+                    enabled: false
+                },
+                btnZoomOut: {
+                    enabled: false
+                },
+                skinBackground: "var(--bs-secondary)",
+                backgroundColor: "rgba(var(--bs-light-rgb), var(--bs-bg-opacity))",
+                mobile: {
+                    viewMode: "swipe",
+                    singlePageMode: true,
+                    zoomMin: 1
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <style>
+        .flipbook-bookLayer.flipbook-move {
+            pointer-events: none;
+        }
+    </style>
+    <div class="button">
+        <a id="read"></a>
+
+</body>
+
+</html>

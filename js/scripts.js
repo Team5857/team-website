@@ -119,38 +119,38 @@ if (typeof window["pdfjs-dist/build/pdf"] != "undefined") {
                 }
             }
 
-            function main() {
-                const opts = {
-                    width: window.screen.width*.99,
-                    height: window.screen.height*.75,
-                    backgroundColor: window.getComputedStyle(document.getElementsByTagName('footer')[0]).backgroundColor
-                };
+            // function main() {
+            //     const opts = {
+            //         width: window.screen.width*.99,
+            //         height: window.screen.height*.75,
+            //         backgroundColor: window.getComputedStyle(document.getElementsByTagName('footer')[0]).backgroundColor
+            //     };
                 
-                const app = document.getElementById("app");
-                const next = document.getElementById("next");
-                const prev = document.getElementById("prev");
-                // const zoom = document.getElementById("zoom");
+            //     const app = document.getElementById("app");
+            //     const next = document.getElementById("next");
+            //     const prev = document.getElementById("prev");
+            //     // const zoom = document.getElementById("zoom");
                 
-                book("assets/Walnut Valley Robotics Sponsorship Packet.pdf", (err, book) => {
-                    if (err) console.error(err);
-                    else
-                    flipbook.init(book, app, opts, (err, viewer) => {
-                        if (err) return console.error(err);
+            //     book("assets/Walnut Valley Robotics Sponsorship Packet.pdf", (err, book) => {
+            //         if (err) console.error(err);
+            //         else
+            //         flipbook.init(book, app, opts, (err, viewer) => {
+            //             if (err) return console.error(err);
                         
-                        viewer.on("seen", (n) => (document.getElementById("pages").innerHTML = n + " / " + book.numPages()));
-                        next.onclick = () => viewer.flip_forward();
-                        prev.onclick = () => viewer.flip_back();
-                        // zoom.onclick = () => viewer.zoom();
-                    });
-                });
-            }
-            if (window.screen.width*.99 < 768) {
-                document.getElementById("controls").style.display = "none";
-                document.getElementById("mobilePDF").src = "https://docs.google.com/viewer?url=https://wvr5857.org/assets/Walnut%20Valley%20Robotics%20Sponsorship%20Packet.pdf&embedded=true";
-                document.getElementById("mobilePDF").style.display = "block";
-            } else {
-                main();
-            }
+            //             viewer.on("seen", (n) => (document.getElementById("pages").innerHTML = n + " / " + book.numPages()));
+            //             next.onclick = () => viewer.flip_forward();
+            //             prev.onclick = () => viewer.flip_back();
+            //             // zoom.onclick = () => viewer.zoom();
+            //         });
+            //     });
+            // }
+            // if (window.screen.width*.99 < 768) {
+            //     document.getElementById("controls").style.display = "none";
+            //     document.getElementById("mobilePDF").src = "https://docs.google.com/viewer?url=https://wvr5857.org/assets/Walnut%20Valley%20Robotics%20Sponsorship%20Packet.pdf&embedded=true";
+            //     document.getElementById("mobilePDF").style.display = "block";
+            // } else {
+            //     main();
+            // }
         }
         
         function strap() {

@@ -1605,7 +1605,7 @@ progress {
   padding: 3rem;
   margin: 0.5rem;
   margin-top: 60px;
-  border: 0.25rem solid rgba(255, 255, 255);
+  border: 0.25rem solid rgb(var(--bs-secondary-rgb));
 }
 
 .cta .cta-inner:before {
@@ -1616,7 +1616,7 @@ progress {
   bottom: -0.5rem;
   left: -0.5rem;
   right: -0.5rem;
-  border: 0.25rem solid rgba(119, 198, 216);
+  border: 0.25rem solid rgb(var(--bs-primary-rgb));
   z-index: 0.5;
 }
 
@@ -9378,7 +9378,7 @@ fieldset:disabled .btn {
 }
 
 .bg-faded {
-  background-color: rgba(106, 211, 235);
+  background-color: rgb(var(--bs-primary-rgb))
 }
 
 .bg-faded2 {
@@ -14079,7 +14079,7 @@ header.masthead .h1 {
   width: 2px;
   margin-left: -1.5px;
   content: "";
-  background-color: #e9ecef;
+  background-color: var(--bs-primary);
 }
 
 .timeline>li {
@@ -14129,9 +14129,9 @@ header.masthead .h1 {
   margin-left: 0;
   text-align: center;
   color: #fff;
-  border: 7px solid #e9ecef;
+  border: 7px solid var(--bs-primary);
   border-radius: 100%;
-  background-color: var(--bs-primary);
+  background-color: var(--bs-secondary);
 }
 
 .timeline>li .timeline-image .h4,
@@ -14466,10 +14466,23 @@ input[type='checkbox']:checked+.card-container .card-flip {
   text-align: center;
 }
 
-i.bi-heart-fill {
-  background: -webkit-linear-gradient(red, FireBrick);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: darkred;
+/* Firefox */
+*{
+  scrollbar-width: auto;
+  scrollbar-color: var(--bs-primary) var(--bs-secondary);
+}
+
+/* Other browsers */
+*::-webkit-scrollbar{
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track{
+  background: var(--bs-secondary);
+}
+
+*::-webkit-scrollbar-thumb{
+  background-color: var(--bs-primary);
+  border-radius: 0px;
+  border: 3px solid var(--bs-secondary);
 }
