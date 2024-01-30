@@ -5,26 +5,43 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />.
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />.
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />.
     <!-- AJAX -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <!-- costume css -->
     <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/gh/kubil-ismail/Pdf-Flipbook@master/css/flipbook.style.css">
+        href="https://cdn.jsdelivr.net/gh/kubil-ismail/Pdf-Flipbook@master/css/flipbook.style.min.css">
     <!-- Bootstrap Css -->
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
 
     <!-- Include JS -->
-    <script src="https://cdn.jsdelivr.net/gh/kubil-ismail/Pdf-Flipbook@master/js/flipbook.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/kubil-ismail/Pdf-Flipbook@master/js/flipbook.min.js"></script>
 
     <script type="text/javascript">
 
         document.addEventListener("DOMContentLoaded", function () {
+            var pages = [
+                {src: "/assets/pdf/pages/1.webp", thumb: "/assets/pdf/thumb/1.webp"},
+                {src: "/assets/pdf/pages/2.webp", thumb: "/assets/pdf/thumb/2.webp"},
+                {src: "/assets/pdf/pages/3.webp", thumb: "/assets/pdf/thumb/3.webp"},
+                {src: "/assets/pdf/pages/4.webp", thumb: "/assets/pdf/thumb/4.webp"},
+                {src: "/assets/pdf/pages/5.webp", thumb: "/assets/pdf/thumb/5.webp"},
+                {src: "/assets/pdf/pages/6.webp", thumb: "/assets/pdf/thumb/6.webp"},
+                {src: "/assets/pdf/pages/7.webp", thumb: "/assets/pdf/thumb/7.webp", htmlContent: '<div class="annotationLayer"><section data-annotation-id="114R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -132.43px -184.988px; left: 132.43px; top: 184.988px; width: 15px; height: 14.25px;"><a title="mailto:walnutvalleyrobotics@gmail.com" href="mailto:walnutvalleyrobotics@gmail.com" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="115R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -147.43px -184.988px; left: 147.43px; top: 184.988px; width: 3px; height: 14.25px;"><a title="https://team5857.tk/" href="https://team5857.tk/" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="116R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -150.43px -184.988px; left: 150.43px; top: 184.988px; width: 119.25px; height: 14.25px;"><a title="https://wvr5857.org/" href="https://wvr5857.org/" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="117R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -131.68px -202.988px; left: 131.68px; top: 202.988px; width: 3px; height: 14.25px;"><a title="mailto:walnutvalleyrobotics@gmail.com" href="mailto:walnutvalleyrobotics@gmail.com" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="118R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -134.68px -202.988px; left: 134.68px; top: 202.988px; width: 201px; height: 14.25px;"><a title="mailto:walnutvalleyrobotics@gmail.com" href="mailto:walnutvalleyrobotics@gmail.com" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="119R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -157.18px -220.988px; left: 157.18px; top: 220.988px; width: 12px; height: 14.25px;"><a title="https://www.facebook.com/WalnutValleyRobotics/" href="https://www.facebook.com/WalnutValleyRobotics/" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="120R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -169.18px -220.988px; left: 169.18px; top: 220.988px; width: 327.75px; height: 14.25px;"><a title="https://www.instagram.com/walnutvalleyrobotics5857/" href="https://www.instagram.com/walnutvalleyrobotics5857/" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="121R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -156.43px -238.988px; left: 156.43px; top: 238.988px; width: 3px; height: 14.25px;"><a title="https://www.facebook.com/WalnutValleyRobotics/" href="https://www.facebook.com/WalnutValleyRobotics/" target="_blank" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="122R" class="linkAnnotation" style="transform: matrix(1.1873, 0, 0, 1.1873, 0, -7.87181); transform-origin: -159.43px -238.988px; left: 159.43px; top: 238.988px; width: 302.25px; height: 14.25px;"><a title="https://www.facebook.com/WalnutValleyRobotics/" href="https://www.facebook.com/WalnutValleyRobotics/" target="_blank" rel="noopener noreferrer nofollow"></a></section></div>'},
+                {src: "/assets/pdf/pages/8.webp", thumb: "/assets/pdf/thumb/8.webp"}
+            ];
+            // pages[0] = {
+            //     src: "/assets/heart.webp",
+                
+            // }
             $("#read").flipBook({
                 //Layout Setting
-                pdfUrl: '/assets/Walnut Valley Robotics Sponsorship Packet.pdf',
+                // pdfUrl: '/assets/Walnut Valley Robotics Sponsorship Packet.pdf',
+                pages: pages,
                 layout: 4, // or 2
                 // BTN SETTING
                 btnShare: { enabled: false },
@@ -51,12 +68,21 @@
                 btnZoomOut: {
                     enabled: false
                 },
+                btnBookmark: {
+                    enabled: false
+                },
+                btnToc: {
+                    enabled: false
+                },
                 skinBackground: "var(--bs-secondary)",
                 backgroundColor: "rgba(var(--bs-light-rgb), var(--bs-bg-opacity))",
                 mobile: {
                     viewMode: "swipe",
                     singlePageMode: true,
                     zoomMin: 1
+                },
+                strings: {
+                    thumbnails: "Pages"
                 }
             });
         })
