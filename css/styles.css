@@ -7546,7 +7546,6 @@ fieldset:disabled .btn {
   font-family: var(--bs-font-sans-serif);  font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  text-align: left;
   text-align: start;
   text-decoration: none;
   text-shadow: none;
@@ -7672,7 +7671,6 @@ fieldset:disabled .btn {
   font-family: var(--bs-font-sans-serif);  font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  text-align: left;
   text-align: start;
   text-decoration: none;
   text-shadow: none;
@@ -13651,7 +13649,7 @@ header.conhead .h1 {
 header.outhead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/skating.webp");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("/assets/img/newimg/heros/contact2.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -13717,7 +13715,7 @@ header.outhead .h1 {
 header.signhead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/legacy.webp");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("/assets/img/newimg/heros/getinvolved.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -13849,7 +13847,7 @@ header.wearehead .h1 {
 header.abouthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/teampic\ copy.webp");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("/assets/img/newimg/heros/about.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -13915,7 +13913,7 @@ header.abouthead .h1 {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/bgimage.webp");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("/assets/img/newimg/heros/home.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -13991,7 +13989,6 @@ header.masthead .h1 {
   color: #fff;
   background: rgba(47, 72, 88, 0.9);
   transition: opacity 0.25s ease;
-  text-align: center;
 }
 
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption .project-category,
@@ -14370,7 +14367,7 @@ a.btn.btn-dark {
 header.sponhead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/oldteam.webp");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("/assets/img/newimg/heros/sponsors.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -14477,4 +14474,31 @@ input[type='checkbox']:checked+.card-container .card-flip {
   background-color: var(--bs-primary);
   border-radius: 0px;
   border: 3px solid var(--bs-secondary);
+}
+
+.slider__arrow--prev {
+  left: 1.5rem;
+}
+.slider__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  margin-top: -9px;
+  border-radius: 50%;
+  background-color: #000;
+  color: var(--bs-body-color);
+  font-size: 1.5rem;
+}
+.glide__arrow {
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.slider__arrow--next {
+  right: 1.5rem;
 }

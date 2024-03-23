@@ -1,0 +1,1 @@
+purgecss --css **/styles.css --content *.html **/*.html **/*.js -o out.css
