@@ -6498,14 +6498,9 @@ fieldset:disabled .btn {
 .next {
   text-decoration: none;
   cursor: pointer;
-  position: absolute;
-  top: 140%;
-  width: auto;
-  margin-top: -22px;
   padding: 16px;
   color: var(--bs-body-color);
-  font-weight: lighter;
-  font-size: 30px;
+  font-size: 1.75em;
   transition: 0.6s ease;
   border-radius: 3px 3px 3px 3px;
   user-select: none;
@@ -13806,7 +13801,7 @@ header.signhead .h1 {
 header.wearehead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/garageteam.webp");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("/assets/img/newimg/heros/whoarewe.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -14322,7 +14317,7 @@ a.btn.btn-dark, a.btn.btn-primary {
 header.dvhead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("../assets/img/legacy3.webp");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url("/assets/img/newimg/heros/divisions.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;

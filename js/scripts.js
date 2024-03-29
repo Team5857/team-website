@@ -135,9 +135,7 @@ function birb() {
         document.addEventListener("keyup", record);
     };
 
-    var data = "/assets/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
-    //     var data = "https://raw.githubusercontent.com/birbbbbbbie/birbbbbbbie.github.io/main/F99F9B71-C188-41FE-ABF1-5A383781363E.gif";
-
+    var data = "/assets/birb.gif";
     init(data);
 }
 
