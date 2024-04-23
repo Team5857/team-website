@@ -7,6 +7,9 @@
 
 <body>
     <script>
+        if (window.sessionStorage.getItem('formSubmitted')) {
+            window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');
+        }
         let formData = new URLSearchParams();
         let params = new URLSearchParams(window.location.search).get('ref');
 
@@ -16,6 +19,8 @@
             formData.append('entry.2020752616', 'regUnknown');
         }
 
+        formData.append('entry.1497314008', document.referrer || 'Unknown')
+
         fetch('https://docs.google.com/forms/d/e/1FAIpQLSdY9ymjWFAFnyUunOLjN9vrKcLUaqWExikF_i3mPT8O5MSR9w/formResponse', {
             method: 'POST',
             body: formData,
@@ -24,6 +29,7 @@
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then(() => {
+            window.sessionStorage.setItem('formSubmitted', 'true');
             window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');
         });
     </script>
