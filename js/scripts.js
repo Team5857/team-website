@@ -96,7 +96,6 @@ function birb() {
         img.style.transition = "13s all";
         img.style.position = "fixed";
         img.style.right = "-374px";
-        // img.style.bottom = 'calc(-50% + 280px)';
         img.style.top = "100px";
         img.style.zIndex = 999999;
 
@@ -115,7 +114,7 @@ function birb() {
     };
 
     var record = function (e) {
-        console.log(e.key, ck);
+        // console.log(e.key, ck);
         if (e.which === key[ck]) {
             ck++;
         } else {
