@@ -37,7 +37,7 @@
             $("#read").flipBook({
                 //Layout Setting
                 // pdfUrl: '/assets/pdf/Walnut Valley Robotics Sponsorship Packet.pdf',
-                layout: 4,
+                layout: 2,
                 pages: pages,
                 // buttons
                 btnShare: { enabled: false },
@@ -376,6 +376,9 @@
     <style>
         .flipbook-bookLayer.flipbook-move {
             pointer-events: none;
+        }
+        body {
+            overflow: hidden;
         }
     </style>
     Loading... Please wait!
