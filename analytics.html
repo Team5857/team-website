@@ -11,11 +11,14 @@
             if (window.sessionStorage.getItem('formSubmitted')) {
                 window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');
                 return;
+            } else if (window.sessionStorage.getItem('specialProg')) {
+                window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSdS3gesOaNvn47b7Yrxvyl71JUWNzR7s9IVfyzUwHWwMlKkTw/viewform?usp=pp_url&entry.597520415=Engineering:+Programming&entry.88528963=(I+saw+the+fliers)+');
+                return;
             }
             let formData = new URLSearchParams();
             let params = new URLSearchParams(window.location.search).get('ref');
 
-            if (params == 'reg2024' || params == 'regClubFair' || params == 'regOutreach') {
+            if (params == 'reg2024' || params == 'regClubFair' || params == 'regOutreach' || params == 'regProg') {
                 formData.append('entry.2020752616', params);
             } else {
                 formData.append('entry.2020752616', 'regUnknown');
@@ -30,6 +33,11 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(() => {
+                if (params == 'regProg') {
+                    window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSdS3gesOaNvn47b7Yrxvyl71JUWNzR7s9IVfyzUwHWwMlKkTw/viewform?usp=pp_url&entry.597520415=Engineering:+Programming&entry.88528963=(I+saw+the+fliers)+');
+                    window.sessionStorage.setItem('specialProg', 'true');
+                    return;
+                }
                 window.sessionStorage.setItem('formSubmitted', 'true');
                 window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');
             })
