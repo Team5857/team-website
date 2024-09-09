@@ -6,25 +6,115 @@
 </head>
 
 <body>
+    <div class="loader"></div>
+    <h1>Loading...</h1>
+    <p id="notLoading" style="display:none">If you're not automatically redirected, <a
+            href="https://forms.gle/UEywJc6Se95jYBXJ7">click here.</a></p>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+
+        /* HTML: <div class="loader"></div> */
+        .loader {
+            display: inline-grid;
+            width: 80px;
+            aspect-ratio: 1;
+            animation: l10-0 6s linear infinite;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: "";
+            grid-area: 1/1;
+        }
+
+        .loader:before {
+            clip-path: polygon(100% 50%, 83.81% 59.06%, 93.3% 75%, 74.75% 74.75%, 75% 93.3%, 59.06% 83.81%, 50% 100%, 40.94% 83.81%, 25% 93.3%, 25.25% 74.75%, 6.7% 75%, 16.19% 59.06%, 0% 50%, 16.19% 40.94%, 6.7% 25%, 25.25% 25.25%, 25% 6.7%, 40.94% 16.19%, 50% 0%, 59.06% 16.19%, 75% 6.7%, 74.75% 25.25%, 93.3% 25%, 83.81% 40.94%);
+            background: #1B325F;
+            transform: rotate(0turn) translate(-12.5%) rotate(0turn);
+            animation: l10-1 2s linear infinite;
+        }
+
+        .loader:after {
+            margin: 12.5%;
+            clip-path: polygon(100% 50%, 78.19% 60.26%, 88.3% 82.14%, 65% 75.98%, 58.68% 99.24%, 44.79% 79.54%, 25% 93.3%, 27.02% 69.28%, 3.02% 67.1%, 20% 50%, 3.02% 32.9%, 27.02% 30.72%, 25% 6.7%, 44.79% 20.46%, 58.68% 0.76%, 65% 24.02%, 88.3% 17.86%, 78.19% 39.74%);
+            background: #9CC4E4;
+        }
+
+        @keyframes l10-0 {
+            to {
+                rotate: 1turn;
+            }
+        }
+
+        @keyframes l10-1 {
+            to {
+                transform: rotate(-1turn) translate(-12.5%) rotate(.75turn);
+            }
+        }
+
+        body {
+            display: flex;
+            flex: 1;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #0f1923;
+            font-family: 'DM Sans', sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        a {
+            color: #9CC4E4;
+            text-decoration: none;
+        }
+    </style>
     <script>
-        (function () {
+        (function (debug) {
+            if (debug) return;
+            // Check if the form has already been submitted
+            // Don't submit the form again if it has
             if (window.sessionStorage.getItem('formSubmitted')) {
+                if (window.sessionStorage.getItem('specialProg')) {
+                    window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSdS3gesOaNvn47b7Yrxvyl71JUWNzR7s9IVfyzUwHWwMlKkTw/viewform?usp=pp_url&entry.597520415=Engineering:+Programming&entry.88528963=(I+saw+the+fliers)+');
+                    return;
+                } else if (window.sessionStorage.getItem('specialClubFair')) {
+                    window.location.replace('https://forms.gle/UEywJc6Se95jYBXJ7');
+                    return;
+                }
                 window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');
                 return;
-            } else if (window.sessionStorage.getItem('specialProg')) {
-                window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSdS3gesOaNvn47b7Yrxvyl71JUWNzR7s9IVfyzUwHWwMlKkTw/viewform?usp=pp_url&entry.597520415=Engineering:+Programming&entry.88528963=(I+saw+the+fliers)+');
-                return;
             }
+            // Create form data
             let formData = new URLSearchParams();
             let params = new URLSearchParams(window.location.search).get('ref');
+            let validParams = ['reg2024', 'regClubFair', 'regOutreach', 'regProg'];
 
-            if (params == 'reg2024' || params == 'regClubFair' || params == 'regOutreach' || params == 'regProg') {
+            if (validParams.includes(params)) {
+                if (params == 'regProg') {
+                    window.sessionStorage.setItem('specialProg', 'true');
+                } else if (params == 'regClubFair') {
+                    window.sessionStorage.setItem('specialClubFair', 'true');
+                }
                 formData.append('entry.2020752616', params);
             } else {
                 formData.append('entry.2020752616', 'regUnknown');
             }
 
+            // Add the referrer to the form data
             formData.append('entry.1497314008', document.referrer || 'Unknown')
+
             fetch('https://docs.google.com/forms/d/e/1FAIpQLSdY9ymjWFAFnyUunOLjN9vrKcLUaqWExikF_i3mPT8O5MSR9w/formResponse', {
                 method: 'POST',
                 body: formData,
@@ -33,14 +123,20 @@
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(() => {
+                window.sessionStorage.setItem('formSubmitted', 'true');
                 if (params == 'regProg') {
                     window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSdS3gesOaNvn47b7Yrxvyl71JUWNzR7s9IVfyzUwHWwMlKkTw/viewform?usp=pp_url&entry.597520415=Engineering:+Programming&entry.88528963=(I+saw+the+fliers)+');
-                    window.sessionStorage.setItem('specialProg', 'true');
+                    return;
+                } else if (params == 'regClubFair') {
+                    window.location.replace('https://forms.gle/UEywJc6Se95jYBXJ7');
                     return;
                 }
-                window.sessionStorage.setItem('formSubmitted', 'true');
                 window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');
             })
-        })();
+        })(false);
+
+        setTimeout(() => {
+            document.getElementById('notLoading').style.display = 'block';
+        }, 3e3);
     </script>
 </body>
