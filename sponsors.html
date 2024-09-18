@@ -241,11 +241,159 @@
 		<hr class="divider" /><br>
 		<p class="text-muted small text-center">However big or small, every cent counts! We are a 501(c)(3) non-profit
 			organization, so all of your donations are tax deductable.</p>
-		<div class="intro-button mx-auto ms-auto text-center"><a class="btn btn-primary btn-xl mx-3"
+		<script>
+			var DDCONF = { API_KEY: "abc123" };
+		</script>
+		<script src="https://doublethedonation.com/api/js/ddplugin.js"></script>
+		<link href="https://doublethedonation.com/api/css/ddplugin.css" rel="stylesheet" />
+		<div id="dd-container">
+		</div>
+		<script>
+			var DDCONF = {
+				HOST: "https://doublethedonation.com",
+				HIDE_NOT_FOUND: true,
+				// COMPANY: "",
+				// DONATION_IDENTIFIER: "PAYPAL-63992",
+				API_KEY: "" //MTAyMDRjODktNjY4
+			};
+
+			// (function () {
+			// 	if (typeof doublethedonation != 'undefined') { // plugin loaded and recognized
+
+
+			// 		var domain = doublethedonation.integrations.core.strip_domain("visittheroyals@gmail.com");
+			// 		doublethedonation.plugin.set_donation_id("PAYPAL-63992");
+			// 		doublethedonation.plugin.set_donation_campaign("tnt");
+			// 		doublethedonation.plugin.email_domain(domain);
+			// 		doublethedonation.integrations.core.register_donation({
+			// 			"360matchpro_public_key": "MTAyMDRjODktNjY4",
+			// 			"campaign": "tnt",
+			// 			"donation_identifier": "PAYPAL-63992",
+			// 			"donation_amount": 25.0,
+			// 			"doublethedonation_company_id": "", // only needed if using streamlined search
+			// 			"doublethedonation_status": "", // only needed if using streamlined search
+			// 			"donor_first_name": "Martina",
+			// 			"donor_last_name": "Royal",
+			// 			"donor_email": "visittheroyals@gmail.com",
+			// 			"donor_phone": "7709009597",
+			// 			"doublethedonation_company_name_input": "",
+			// 			"pdf_form_fields": {
+			// 				"Employee Address1": "477 Skiles Ct",
+			// 				"Employee Address2": "",
+			// 				"Employee City": "Suwanee",
+			// 				"Employee State": "GA",
+			// 				"Employee Zip": "30024",
+			// 				"Employee Phone": "7709009597"
+			// 			}
+			// 		}, function (resp) {
+			// 			if (resp.esign_url) {
+			// 				doublethedonation.plugin.set_docusign_envelope_url(resp.esign_url, "Your donation is eligible for a matching gift. Please click here to fill out the form!");
+			// 			}
+			// 		});
+
+
+				}
+			});
+		</script>
+		<style>
+			/*Change button colors*/
+			#dd-container .lets-check,
+			#dd-container .mg-forms-button,
+			#dd-container .mg-guidelines-button {
+				background-color: #38698D !important;
+				border: 2px solid #38698D;
+				color: var(--bs-body-color);
+			}
+
+			/*Change font*/
+			#dd-container div {
+				font-family: "Manrope", sans-serif;
+			}
+
+			/*Change the background color of the plugin*/
+			#dd-container .dtd-callout,
+			.dtd-plugin .dtd-callout {
+				background-color: var(--bs-body-bg);
+				color: var(--bs-body-color);
+				box-shadow: none !important;
+				border: none !important;
+				border-radius: 1rem;
+			}
+
+			/*Change the background color of the plugin*/
+			#dd-container .data-cell,
+			.dtd-plugin .data-cell {
+				background-color: rgba(0, 0, 0, 0.1) !important;
+				border-radius: 1rem;
+			}
+
+			/*Fix the font color of the text in the plugin*/
+			#dd-container p, .dtd-plugin p {
+				color: var(--bs-body-color);
+			}
+
+			/*Change search title (See if your employer will match your donation) font-size and weight.*/
+			#dd-container .search-title,
+			.dtd-plugin .search-title {
+				font-size: 27px;
+				font-weight: 300;
+			}
+
+			/*Format the footer that 'All information provided by Double the Donation appear on one line*/
+			#dd-container .dtd-footer br {
+				display: none;
+			}
+
+			#dd-container .dtd-search-input, .dtd-plugin .dtd-search-input {
+				border-radius: 1rem;
+				background-color: var(--bs-body-bg)!important;
+				color: var(--bs-body-color)!important;
+			}
+
+			#dd-container .dtd-search-box, .dtd-plugin .dtd-search-box {
+				border-radius: 1rem;
+				background-color: var(--bs-body-bg)!important;
+				color: var(--bs-body-color)!important;
+			}
+
+			#dd-container .dtd-plugin .Select-option {
+				background-color: var(--bs-body-bg)!important;
+				color: var(--bs-body-color)!important;
+			}
+
+			#dd-container .Select-menu-outer, .dtd-plugin .Select-menu-outer {
+				border: none!important;
+			}
+
+			#dd-container .search-another-top a, .dtd-plugin .search-another-top a {
+				color: var(--bs-body-color)!important;
+				background-color: var(--bs-body-bg)!important;
+			}
+
+			/*If mobile, change search title to something smaller than 27px*/
+			@media only screen and (max-width: 700px) {
+
+				#dd-container .search-title,
+				.dtd-plugin .search-title {
+					font-size: 24px;
+					font-weight: 300;
+					line-height: 36px;
+				}
+			}
+		</style>
+		<!-- 
+		or
+
+		<script>
+				/ <![CDATA[
+			var DDCONF = { API_KEY: "AP28Gt05lMleymNg" };
+			// ]]>
+		</script> -->
+		<!-- <div class="intro-button mx-auto ms-auto text-center"><a class="btn btn-primary btn-xl mx-3"
 				href="/contact">Sponsors</a>
 			<a class="btn btn-primary btn-xl mx-3"
 				onclick="document.getElementById('j9Y7wj').shadowRoot.querySelector('#j9Y7wj').shadowRoot.querySelector('givebutter-dialog').querySelector('button').click();">Donations</a>
-		</div>
+		</div> -->
 	</section>
 	</div>
 	</section>
