@@ -99,6 +99,10 @@
     --bs-body-color: #FEFEFC;
     --bs-body-bg: #212529;
   }
+
+  .glide__slide img {
+    filter: brightness(1.7);
+  }
 }
 
 *,
