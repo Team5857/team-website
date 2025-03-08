@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="refresh" content="0;url=https://www.youtube.com/watch?v=dQw4w9WgXcQ"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="title" content="Team 5857 | Walnut Valley Robotics" />
+    <meta name="description"
+        content="We are FIRST Robotics Competition Team 5857, a small, non-profit organization of dedicated students ready to win the next FRC challenge!" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wvr5857.org/" />
+    <meta property="og:title" content="Team 5857 | Walnut Valley Robotics" />
+    <meta property="og:description"
+        content="We are FIRST Robotics Competition Team 5857, a small, non-profit organization of dedicated students ready to win the next FRC challenge!" />
+    <meta property="og:image" content="https://wvr5857.org/assets/img/embed.webp" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://wvr5857.org/" />
+    <meta property="twitter:title" content="Team 5857 | Walnut Valley Robotics" />
+    <meta property="twitter:description"
+        content="We are FIRST Robotics Competition Team 5857, a small, non-profit organization of dedicated students ready to win the next FRC challenge!" />
+    <meta property="twitter:image" content="https://wvr5857.org/assets/img/embed.webp" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>Robots | Walnut Valley Robotics</title>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <h1>Loading...</h1>
+    <p id="notLoading" style="display:none">If you're not automatically redirected, <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">click here.</a></p>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+
+        /* HTML: <div class="loader"></div> */
+        .loader {
+            height: 30px;
+            aspect-ratio: 6;
+            --c: #0000 64%, #1B325F 66% 98%, #0000 101%;
+            background:
+                radial-gradient(35% 146% at 50% 159%, var(--c)) 0 0,
+                radial-gradient(35% 146% at 50% -59%, var(--c)) 25% 100%;
+            background-size: calc(100%/3) 50%;
+            background-repeat: repeat-x;
+            -webkit-mask: repeating-linear-gradient(90deg, #000 0 15%, #0000 0 50%) 0 0/200%;
+            animation: l7 .8s infinite linear;
+        }
+
+        @keyframes l7 {
+            to {
+                -webkit-mask-position: -100% 0
+            }
+        }
+
+        body {
+            display: flex;
+            flex: 1;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #0f1923;
+            font-family: 'DM Sans', sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            margin: .5em 1em;
+        }
+
+        a {
+            color: #9CC4E4;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        setTimeout(() => {
+            document.getElementById('notLoading').style.display = 'block';
+        }, 3e3);
+    </script>
+</body>
+
+</html>
