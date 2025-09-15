@@ -81,14 +81,12 @@ function strap() {
 // Script by birbbbbbb
 
 function birb() {
-    // type 'birb' on your keyboard
-    var key = [66, 73, 82, 66];
-    var ck = 0;
-    var max = key.length;
-    var onscreen = false;
+    const key = [66, 73, 82, 66];
+    let ck = 0, onscreen = false;
+    const data = "/assets/birb.gif";
 
-    var unicorn = function () {
-        var img = new Image();
+    function unicorn() {
+        const img = new Image();
         img.src = data;
         img.style.pointerEvents = "none";
         img.style.width = "600px";
@@ -98,48 +96,39 @@ function birb() {
         img.style.right = "-374px";
         img.style.top = "100px";
         img.style.zIndex = 999999;
-
         document.body.appendChild(img);
 
-        window.setTimeout(function () {
-            img.style.right = "calc(100% + 500px)";
-        }, 50);
+        setTimeout(() => { img.style.right = "calc(100% + 500px)"; }, 50);
+        setTimeout(() => { img.remove(); }, 10300);
+        setTimeout(() => { onscreen = false; }, 5000);
+    }
 
-        window.setTimeout(function () {
-            img.parentNode.removeChild(img);
-        }, 10300);
-        setTimeout(function () {
-            onscreen = false;
-        }, 5000);
-    };
-
-    var record = function (e) {
-        // console.log(e.key, ck);
+    document.addEventListener("keyup", function (e) {
         if (e.which === key[ck]) {
             ck++;
         } else {
             ck = 0;
         }
-
-        if (ck >= max && !onscreen) {
+        if (ck >= key.length && !onscreen) {
             onscreen = true;
             unicorn();
             ck = 0;
         } else if (onscreen) {
             ck = 0;
         }
-    };
-
-    var init = function (data) {
-        document.addEventListener("keyup", record);
-    };
-
-    var data = "/assets/birb.gif";
-    init(data);
+    });
 }
 
 // Change the footer year
-
+document.addEventListener("DOMContentLoaded", function () {
+    // Load footer
+    fetch("/parts/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+            document.querySelector("footer").innerHTML = data;
+            document.getElementById("year").innerText = new Date().getFullYear();
+        });
+});
 //init all functions
 birb();
 strap();

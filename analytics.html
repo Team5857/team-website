@@ -9,7 +9,7 @@
     <div class="loader"></div>
     <h1>Loading...</h1>
     <p id="notLoading" style="display:none">If you're not automatically redirected, <a
-            href="https://forms.gle/UEywJc6Se95jYBXJ7">click here.</a></p>
+            href="https://forms.gle/9zQQpt9U6BNxZGtm8">click here.</a></p>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
 
@@ -91,9 +91,6 @@
                 if (window.sessionStorage.getItem('specialProg')) {
                     window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSdS3gesOaNvn47b7Yrxvyl71JUWNzR7s9IVfyzUwHWwMlKkTw/viewform?usp=pp_url&entry.597520415=Engineering:+Programming&entry.88528963=(I+saw+the+fliers)+');
                     return;
-                } else if (window.sessionStorage.getItem('specialClubFair')) {
-                    window.location.replace('https://forms.gle/UEywJc6Se95jYBXJ7');
-                    return;
                 }
                 window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');
                 return;
@@ -106,8 +103,6 @@
             if (validParams.includes(params)) {
                 if (params == 'regProg') {
                     window.sessionStorage.setItem('specialProg', 'true');
-                } else if (params == 'regClubFair') {
-                    window.sessionStorage.setItem('specialClubFair', 'true');
                 }
                 formData.append('entry.2020752616', params);
             } else {
@@ -128,9 +123,6 @@
                 window.sessionStorage.setItem('formSubmitted', 'true');
                 if (params == 'regProg') {
                     window.location.replace('https://docs.google.com/forms/d/e/1FAIpQLSdS3gesOaNvn47b7Yrxvyl71JUWNzR7s9IVfyzUwHWwMlKkTw/viewform?usp=pp_url&entry.597520415=Engineering:+Programming&entry.88528963=(I+saw+the+fliers)+');
-                    return;
-                } else if (params == 'regClubFair') {
-                    window.location.replace('https://forms.gle/UEywJc6Se95jYBXJ7');
                     return;
                 }
                 window.location.replace('https://forms.gle/LaNnxqWBDLkVS6cN9');

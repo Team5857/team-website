@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Encrypt HTML File | Walnut Valley Robotics</title>
+        <!-- No Robots or Index -->
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <style>
+            body, html {
+                height: 100%;
+            }
+            .center-container {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            .center-container input, .center-container button {
+                margin: 10px;
+                padding: 10px 20px;
+                font-size: 1.1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center-container">
+            <h1>Encrypt HTML File</h1>
+            <input type="file" id="fileInput" accept=".html"/>
+            <input type="text" id="passwordInput" placeholder="Enter password"/>
+            <button id="encryptButton">Encrypt</button>
+        </div>
+        <script src="/js/cryptoFiles.js"></script>
+        <script>
+            const salt = "wvr5857";
+            // Download file function using blob
+            function downloadFile(content, fileName) {
+                const blob = new Blob([content], { type: "text/html" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+            // Add event listener to the button
+            document.getElementById("encryptButton").addEventListener("click", function() {
+                const fileInput = document.getElementById("fileInput");
+                const file = fileInput.files[0];
+                const password = document.getElementById("passwordInput").value;
+                if (!file || !password) {
+                    alert("Please select a file and enter a password.");
+                    return;
+                }
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = async function(event) {
+                        const fileContent = event.target.result;
+                        const encryptedContent = await encryptFile(password, salt, fileContent);
+                        downloadFile(JSON.stringify(encryptedContent), "encrypted_" + file.name);
+                    };
+                    reader.readAsText(file);
+                }
+            });
+        </script>
+    </body>
+</html>

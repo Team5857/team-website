@@ -101,7 +101,7 @@
   }
 
   .glide__slide img {
-    filter: brightness(1.7);
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 2%, rgba(255,255,255,0) 70%);
   }
 }
 
