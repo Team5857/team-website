@@ -14503,25 +14503,30 @@ input[type='checkbox']:checked+.card-container .card-flip {
 }
 
 @media screen and (max-width: 768px) {
-  .row, .flex-row, .grid-container, .d-flex {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-  }
-  
-  div[class*="col-"], .text-section, .content-block, [class*="col"] {
+  /* Force ALL columns, containers, and rows to stack vertically */
+  div, section, article, main, header, footer {
+    display: block !important;
+    float: none !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: unset !important;
-    flex: 0 0 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    box-sizing: border-box !important;
   }
-	/* Centers and properly sizes photos on phone viewports */
-  img, .img-fluid, .image-container {
+
+  /* Force ALL layout flex containers to stack vertically */
+  .d-flex, [class*="flex-"], [class*="row"], [class*="grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Center and cleanly size every single image */
+  img {
     display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    max-width: 100% !important;
+    float: none !important;
+    margin: 15px auto !important;
+    max-width: 90% !important;
     height: auto !important;
   }
-}
 }
