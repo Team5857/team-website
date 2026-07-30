@@ -14515,5 +14515,13 @@ input[type='checkbox']:checked+.card-container .card-flip {
     min-width: unset !important;
     flex: 0 0 100% !important;
   }
+	/* Centers and properly sizes photos on phone viewports */
+  img, .img-fluid, .image-container {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
 }
-
+}
