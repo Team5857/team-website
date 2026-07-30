@@ -14501,3 +14501,19 @@ input[type='checkbox']:checked+.card-container .card-flip {
 .slider__arrow--next {
   right: 1.5rem;
 }
+
+@media screen and (max-width: 768x) {
+	.row, .flex-row, .grid-container, .d-flex {
+		display: flex !important;
+		flex-direction: column !important;
+		width: 100% !important;
+	}
+
+
+div[class*="col-"], .text-section, .content-block, [class*="col"] {
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: unset !important;
+	flex: 0 0 100% !important;
+}
+}		
