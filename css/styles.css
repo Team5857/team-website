@@ -14501,32 +14501,3 @@ input[type='checkbox']:checked+.card-container .card-flip {
 .slider__arrow--next {
   right: 1.5rem;
 }
-
-@media screen and (max-width: 768px) {
-  /* Force ALL columns, containers, and rows to stack vertically */
-  div, section, article, main, header, footer {
-    display: block !important;
-    float: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: unset !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Force ALL layout flex containers to stack vertically */
-  .d-flex, [class*="flex-"], [class*="row"], [class*="grid"] {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  /* Center and cleanly size every single image */
-  img {
-    display: block !important;
-    float: none !important;
-    margin: 15px auto !important;
-    max-width: 90% !important;
-    height: auto !important;
-  }
-}
