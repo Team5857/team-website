@@ -1618,6 +1618,8 @@ progress {
   right: -0.5rem;
   border: 0.25rem solid rgb(var(--bs-primary-rgb));
   z-index: 0.5;
+  /* Decorative border only; on narrow screens it sits on top of the sign-up button. */
+  pointer-events: none;
 }
 
 .col {
