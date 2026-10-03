@@ -1,0 +1,1150 @@
+/*
+ * Apple-inspired look for wvr5857.org.
+ * Loaded after styles.css and aos.css, and only restyles what is already on
+ * each page. Removing the <link> to this file restores the previous look.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* SF Pro on Apple devices, Inter (the closest free match) everywhere else */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --page-bg: #ffffff;
+  --page-bg-alt: #f5f5f7;
+  --tile-bg: #f5f5f7;
+  --tile-bg-on-alt: #ffffff;
+  --text: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --hairline: #d2d2d7;
+  --accent: #0077b6;
+  --accent-hover: #00669c;
+  --link: #0077b6;
+  --nav-bg: rgba(251, 251, 253, 0.8);
+  --nav-hairline: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.3);
+
+  /* Light-mode stops are dark enough for 3:1 contrast as large text on white */
+  --blue: #0077b6;
+  --sky: #0a9fc0;
+  --violet: #5e5ce6;
+  --purple: #a742d9;
+  --green: #1f9d55;
+  --pink: #e8336b;
+  --orange: #f56300;
+  --amber: #b77f00;
+  --tint-base: #ffffff;
+  --tint-amount: 8%;
+  --band-tint-amount: 5%;
+  --text-on-tint: #5c5c61;
+
+  --nav-height: 52px;
+  --gutter: 22px;
+  --radius-tile: 28px;
+  --radius-card: 22px;
+  --section-space: clamp(72px, 10vw, 128px);
+
+  /* Bootstrap variables that styles.css reads */
+  --bs-body-bg: var(--page-bg);
+  --bs-body-color: var(--text);
+  --bs-light-rgb: 245, 245, 247;
+  --bs-body-font-family: var(--font-sans);
+  --bs-font-sans-serif: var(--font-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #000000;
+    --page-bg-alt: #161617;
+    --tile-bg: #1d1d1f;
+    --tile-bg-on-alt: #000000;
+    --text: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --hairline: #424245;
+    --link: #5ec4e8;
+    --nav-bg: rgba(22, 22, 23, 0.8);
+    --nav-hairline: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(29, 29, 31, 0.72);
+    --scrollbar-thumb: rgba(255, 255, 255, 0.3);
+    --bs-light-rgb: 22, 22, 23;
+
+    --blue: #3ba7e6;
+    --sky: #5ed3f3;
+    --violet: #8e8cff;
+    --purple: #da8fff;
+    --green: #30d158;
+    --pink: #ff6482;
+    --orange: #ff9f0a;
+    --amber: #ffd60a;
+    --tint-base: #1d1d1f;
+    --tint-amount: 20%;
+    --band-tint-amount: 10%;
+    --text-on-tint: #b4b4b9;
+  }
+}
+
+
+/* Each page gets its own color pair, the way Apple gives each product one.
+   Titles, tiles and bands below read these. */
+
+body                         { --page-from: var(--blue);   --page-to: var(--sky); }
+body:has(> header.abouthead) { --page-from: var(--blue);   --page-to: var(--purple); }
+body:has(> header.wearehead) { --page-from: var(--violet); --page-to: var(--purple); }
+body:has(> header.dvhead)    { --page-from: var(--blue);   --page-to: var(--sky); }
+body:has(> header.hhead)     { --page-from: var(--orange); --page-to: var(--pink); }
+body:has(> header.signhead)  { --page-from: var(--green);  --page-to: var(--sky); }
+body:has(> header.conhead)   { --page-from: var(--pink);   --page-to: var(--purple); }
+body:has(> header.outhead)   { --page-from: var(--blue);   --page-to: var(--violet); }
+body:has(> header.sponhead)  { --page-from: var(--orange); --page-to: var(--amber); }
+
+
+/* Base */
+
+body {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  color: var(--text);
+  background-color: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: inherit;
+}
+
+h3:empty {
+  display: none;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+}
+
+.text-muted,
+.text-black-50,
+.text-primary-75 {
+  color: var(--text-secondary) !important;
+}
+
+h1.text-primary, h2.text-primary, h3.text-primary, h4.text-primary {
+  color: var(--text) !important;
+}
+
+i.text-primary {
+  color: var(--link) !important;
+}
+
+.img-fluid {
+  max-width: 100%;
+}
+
+hr.divider {
+  display: none;
+}
+
+/* Chrome reads the standard properties; Safari only reads the -webkit- ones */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border: 3px solid transparent;
+  border-radius: 980px;
+  background-clip: content-box;
+}
+
+
+/* Buttons */
+
+.btn {
+  font-family: var(--font-sans);
+  letter-spacing: -0.022em;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn-primary,
+.btn-primary:focus {
+  color: #fff;
+  background-color: var(--accent);
+  border-color: var(--accent);
+  border-radius: 980px;
+  box-shadow: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:active:focus {
+  color: #fff;
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: none;
+}
+
+.btn-xl {
+  padding: 12px 24px;
+  font-size: 17px;
+  font-weight: 400;
+  text-transform: none;
+  border-radius: 980px;
+}
+
+
+/* Navigation */
+
+#mainNav {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background-color: var(--nav-bg) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--nav-hairline);
+  box-shadow: none !important;
+}
+
+#mainNav > .container {
+  min-height: var(--nav-height);
+}
+
+/* The logo size is set inline in every page, hence !important */
+#mainNav .logo img {
+  display: block;
+  width: auto !important;
+  height: 30px !important;
+}
+
+#mainNav.navbar .navbar-nav .nav-item .nav-link {
+  color: var(--text);
+  opacity: 0.8;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+#mainNav.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: var(--text);
+  opacity: 1;
+  text-decoration: none;
+}
+
+#mainNav .hover-underline-animation {
+  top: 0;
+}
+
+#mainNav .hover-underline-animation::after {
+  display: none;
+}
+
+#mainNav .navbar-toggler {
+  padding: 6px;
+  font-size: 22px;
+  color: var(--text);
+  border: 0;
+  box-shadow: none;
+}
+
+@media (min-width: 992px) {
+  #mainNav.navbar .navbar-nav .nav-item .nav-link {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  #mainNav .navbar-nav {
+    padding: 8px 0 24px;
+  }
+
+  #mainNav.navbar .navbar-nav .nav-item .nav-link {
+    padding: 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    opacity: 1;
+  }
+}
+
+
+/* Home hero: full-bleed photo */
+
+header.masthead {
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  padding: var(--nav-height) 0 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.8) 100%),
+    url("/assets/img/newimg/heros/home.webp") center / cover no-repeat;
+}
+
+header.masthead h1 {
+  font-size: clamp(44px, 7.2vw, 96px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, #ffffff 0%, #bfe6f2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header.masthead p.text-white-75 {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: clamp(19px, 1.8vw, 24px);
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+
+/* Page headers: headline on the page background, photo as a rounded card below */
+
+header.abouthead { --hero-image: url("/assets/img/newimg/heros/about.webp"); }
+header.wearehead { --hero-image: url("/assets/img/newimg/heros/whoarewe.webp"); }
+header.dvhead    { --hero-image: url("/assets/img/newimg/heros/divisions.webp"); }
+header.hhead     { --hero-image: url("/assets/img/history.webp"); }
+header.signhead  { --hero-image: url("/assets/img/newimg/heros/getinvolved.webp"); }
+header.conhead   { --hero-image: url("/assets/img/2025pentapanthers.webp"); }
+header.outhead   { --hero-image: url("/assets/img/newimg/heros/contact2.webp"); }
+header.sponhead  { --hero-image: url("/assets/img/newimg/heros/sponsors.webp"); }
+
+:is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
+    header.signhead, header.conhead, header.outhead, header.sponhead) {
+  height: auto;
+  min-height: 0;
+  padding: calc(var(--nav-height) + clamp(48px, 7vw, 96px)) 0 0;
+  background: var(--page-bg);
+}
+
+:is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
+    header.signhead, header.conhead, header.outhead, header.sponhead) h1 {
+  /* inline-block so the gradient spans the words, not the whole column */
+  display: inline-block;
+  margin: 0;
+  padding-bottom: 0.08em;
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text) !important;
+  background: linear-gradient(90deg, var(--page-from), var(--page-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
+    header.signhead, header.conhead, header.outhead, header.sponhead) p:empty {
+  display: none;
+}
+
+/* Hung off the inner .container so the photo lines up with the tiles below */
+:is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
+    header.signhead, header.conhead, header.outhead, header.sponhead) > .container::after {
+  content: "";
+  display: block;
+  margin-top: clamp(32px, 5vw, 56px);
+  aspect-ratio: 21 / 9;
+  border-radius: var(--radius-tile);
+  background: var(--hero-image) center / cover no-repeat;
+  box-shadow: 0 40px 80px -40px color-mix(in srgb, var(--page-from) 55%, transparent);
+}
+
+@media (max-width: 767.98px) {
+  :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
+      header.signhead, header.conhead, header.outhead, header.sponhead) > .container::after {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-card);
+  }
+}
+
+/* contact.html zeroes this section's padding inline */
+header.outhead + .page-section {
+  padding-top: var(--section-space) !important;
+}
+
+
+/* Sections */
+
+.page-section {
+  margin: 0;
+  padding: var(--section-space) 0;
+}
+
+.title-section {
+  padding: var(--section-space) 0;
+}
+
+/* Gray bands pick up a hint of the page color; the footer stays neutral */
+section.bg-light {
+  background-color: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--band-tint-amount), var(--page-bg-alt)) !important;
+}
+
+.title-section > h2,
+.title-section > h3,
+.title-section > p {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--gutter);
+}
+
+.title-section h2,
+.title-section > h3,
+#services h2 {
+  margin-bottom: 20px;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.07;
+  letter-spacing: -0.025em;
+}
+
+.title-section > h3 ~ .container,
+.title-section > h3 ~ .glide,
+.title-section > h3 ~ .slideshow-container {
+  margin-top: 40px;
+}
+
+.title-section > p {
+  max-width: 680px;
+  font-size: 17px;
+}
+
+.title-section .col-lg-8 > p {
+  font-size: clamp(19px, 1.6vw, 21px);
+  line-height: 1.42;
+  letter-spacing: -0.01em;
+}
+
+.projects-section {
+  padding: 12px 0;
+}
+
+.bg-light + .projects-section {
+  padding-top: 48px;
+}
+
+.featured-text {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.featured-text > br {
+  display: none;
+}
+
+
+/* Feature tiles. Three markups share this look: .projects-section rows
+   (about, sponsors, outreach), .title-section rows (divisions) and the
+   outreach slideshow (.mySlides). */
+
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0,
+    .mySlides > .container > .row) {
+  --bs-gutter-x: 0;
+  margin: 0 0 24px !important;
+  align-items: stretch !important;
+  background: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--tint-amount), var(--tint-base));
+  border-radius: var(--radius-tile);
+  overflow: hidden;
+}
+
+/* The About tiles take the color of the page each one links to */
+body:has(> header.abouthead) .projects-section:nth-of-type(1) { --tile-color: var(--violet); }
+body:has(> header.abouthead) .projects-section:nth-of-type(2) { --tile-color: var(--blue); }
+body:has(> header.abouthead) .projects-section:nth-of-type(3) { --tile-color: var(--orange); }
+
+/* Divisions: Engineering stays blue, Business gets its own color */
+body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet); }
+
+/* divisions and outreach wrap their columns in a second .row */
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0) > .row {
+  --bs-gutter-x: 0;
+  margin: 0;
+  align-items: stretch !important;
+}
+
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0,
+    .mySlides > .container > .row) [class*="col-"]:has(> img) {
+  position: relative;
+  min-height: 380px;
+  padding: 0;
+}
+
+/* Images carry inline widths and left margins, hence !important */
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0,
+    .mySlides > .container > .row) [class*="col-"] > img {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100%;
+  max-width: none;
+  margin: 0 !important;
+  object-fit: cover;
+  border: 0;
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0,
+    .mySlides > .container > .row) [class*="col-"]:not(:has(> img)) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 4vw, 56px);
+}
+
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0,
+    .mySlides > .container > .row) :is(h2, h4) {
+  margin-bottom: 12px;
+  font-size: clamp(26px, 2.6vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text) !important;
+}
+
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0,
+    .mySlides > .container > .row) p {
+  font-size: 17px;
+  line-height: 1.47;
+  color: var(--text-on-tint) !important;
+}
+
+:is(.projects-section > .container > .row,
+    .title-section > .container > .row.gx-0,
+    .mySlides > .container > .row) .intro-button {
+  margin-top: 8px;
+}
+
+@media (max-width: 991.98px) {
+  :is(.projects-section > .container > .row,
+      .title-section > .container > .row.gx-0,
+      .mySlides > .container > .row) [class*="col-"] {
+    width: 100%;
+  }
+
+  :is(.projects-section > .container > .row,
+      .title-section > .container > .row.gx-0,
+      .mySlides > .container > .row) [class*="col-"]:has(> img) {
+    order: -1;
+    min-height: 0;
+  }
+
+  :is(.projects-section > .container > .row,
+      .title-section > .container > .row.gx-0,
+      .mySlides > .container > .row) [class*="col-"] > img {
+    position: static;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+
+/* Home: "We do way more than just robotics" */
+
+#services .row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin: 48px 0 0;
+}
+
+#services .row > * {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+#services .row > * > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  margin: 0 !important;
+  padding: 36px 24px;
+  background: color-mix(in srgb, var(--tile-color) var(--tint-amount), var(--tint-base));
+  border-radius: var(--radius-card);
+}
+
+#services .row > :nth-child(1) { --tile-color: var(--blue); }
+#services .row > :nth-child(2) { --tile-color: var(--violet); }
+#services .row > :nth-child(3) { --tile-color: var(--green); }
+#services .row > :nth-child(4) { --tile-color: var(--pink); }
+#services .row > :nth-child(5) { --tile-color: var(--orange); }
+
+#services i {
+  font-size: 40px !important;
+  line-height: 1;
+  color: var(--tile-color) !important;
+}
+
+/* The paragraphs set font-size inline */
+#services p {
+  font-size: 17px !important;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text) !important;
+}
+
+@media (max-width: 991.98px) {
+  #services .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #services .row > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #services .row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  #services .row > * > div {
+    flex-direction: row;
+    padding: 20px 22px;
+    text-align: left;
+  }
+
+  #services .row > * > div > .mb-2 {
+    margin: 0 !important;
+  }
+
+  #services i {
+    font-size: 30px !important;
+  }
+}
+
+/* Home: "Get to know us!" as a full-color band. The stops keep white text
+   at 3:1 or better for the large headline. */
+#services + .title-section {
+  color: #fff;
+  background: linear-gradient(120deg, #0062a8 0%, #0b8fb5 50%, #1c9a74 100%) !important;
+}
+
+#services + .title-section .btn-xl {
+  margin: 6px 4px;
+  color: #0062a8;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+#services + .title-section .btn-xl:hover {
+  color: #0062a8;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-color: transparent;
+}
+
+
+/* Get Involved: photo with a frosted card over it */
+
+/* Soft color glows behind the photo, which the frosted card then blurs */
+.cta {
+  padding: var(--section-space) 0;
+  background:
+    radial-gradient(40% 50% at 12% 35%, color-mix(in srgb, var(--page-from) 35%, transparent), transparent 70%),
+    radial-gradient(40% 50% at 88% 70%, color-mix(in srgb, var(--page-to) 35%, transparent), transparent 70%);
+}
+
+.intro .intro-img {
+  max-width: 100%;
+  border: 0 !important;
+  border-radius: var(--radius-tile) !important;
+  box-shadow: none !important;
+}
+
+.cta .cta-inner {
+  margin: 0;
+  padding: clamp(32px, 4vw, 56px) !important;
+  color: var(--text);
+  background-color: var(--glass-bg) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(30px);
+  backdrop-filter: saturate(180%) blur(30px);
+  border: 0;
+  border-radius: var(--radius-tile) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.14);
+}
+
+.cta .cta-inner::before {
+  display: none;
+}
+
+.cta .cta-inner h3 {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* The second heading sets font-size inline */
+.cta .cta-inner h3 + br + h3 {
+  margin-bottom: 16px;
+  font-size: 21px !important;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.cta .cta-inner p {
+  color: var(--text-secondary);
+}
+
+.intro .intro-text .intro-button {
+  position: static;
+  width: auto;
+  margin-top: 28px;
+}
+
+@media (min-width: 992px) {
+  .intro .intro-img {
+    width: 72%;
+  }
+
+  /* The card sets margin-top inline */
+  .intro .intro-text {
+    top: 4rem;
+    width: 48%;
+    margin-top: 0 !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .intro .intro-text {
+    width: 44%;
+  }
+}
+
+
+/* History timeline */
+
+.timeline::before {
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(180deg, var(--page-from), var(--page-to));
+  opacity: 0.6;
+}
+
+.timeline > li .timeline-image {
+  overflow: hidden;
+  color: #fff;
+  background: var(--tile-bg);
+  border: 0;
+  box-shadow:
+    0 0 0 5px var(--page-bg),
+    0 0 0 7px color-mix(in srgb, var(--page-from) 60%, transparent),
+    0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.timeline > li .timeline-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timeline > li:last-child .timeline-image {
+  background: linear-gradient(135deg, var(--page-from) 0%, var(--page-to) 100%);
+}
+
+.timeline .timeline-heading h4 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+/* The years: inline-block so the gradient spans the digits */
+.timeline .timeline-heading h4:not(.subheading) {
+  display: inline-block;
+  color: var(--page-from);
+  background: linear-gradient(90deg, var(--page-from), var(--page-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timeline .timeline-heading h4.subheading {
+  margin-bottom: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.timeline .timeline-body > p {
+  font-size: 17px;
+}
+
+
+/* Contact cards */
+
+.card {
+  background-color: var(--tile-bg);
+  border: 0;
+  border-radius: var(--radius-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-body hr {
+  display: none;
+}
+
+.card-body h4 {
+  margin: 8px 0 6px !important;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.card-body .small {
+  font-size: 17px;
+}
+
+/* Each platform's own color. The icons carry .text-primary (!important). */
+.card-body .bi-envelope { color: var(--blue) !important; }
+.card-body .bi-youtube  { color: #ff0033 !important; }
+.card-body .bi-facebook { color: #1877f2 !important; }
+
+.card-body :is(.bi-github, i:has(> svg)) {
+  color: var(--text) !important;
+}
+
+.card-body .bi-tiktok::before,
+.card-body .bi-instagram::before {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-body .bi-tiktok::before {
+  background-image: linear-gradient(135deg, #00b8c4 0%, #fe2c55 100%);
+}
+
+.card-body .bi-instagram::before {
+  background-image: linear-gradient(45deg, #f58529 0%, #dd2a7b 45%, #8134af 75%, #515bd4 100%);
+}
+
+
+/* Outreach slideshow */
+
+.mySlides > .container {
+  padding-left: var(--gutter) !important;
+  padding-right: var(--gutter) !important;
+}
+
+.numbertext {
+  z-index: 2;
+  top: calc(3rem + 16px);
+  left: calc(var(--gutter) + 16px);
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 980px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 5px;
+  vertical-align: middle;
+  background-color: var(--hairline);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.dot:hover {
+  background-color: var(--text-secondary);
+}
+
+.dot.active {
+  width: 24px;
+  background-color: var(--page-from);
+  border-radius: 4px;
+}
+
+.prev,
+.next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 12px;
+  padding: 0;
+  font-size: 14px;
+  vertical-align: middle;
+  color: var(--text);
+  background-color: var(--tile-bg);
+  border-radius: 50%;
+}
+
+.prev:hover,
+.next:hover {
+  color: var(--text);
+  background-color: var(--hairline);
+  text-decoration: none;
+}
+
+
+/* Sponsors logo carousel */
+
+.title-section > .glide {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--gutter);
+}
+
+.glide__slide > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  margin: 0 8px;
+  /* Light in both modes so dark logos stay readable */
+  background-color: #f5f5f7;
+  border-radius: var(--radius-card);
+}
+
+.glide__slide > a > img {
+  width: auto;
+  max-width: 70%;
+  max-height: 110px;
+  object-fit: contain;
+  background: none;
+}
+
+.slider__arrow.glide__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  font-size: 18px;
+  color: var(--text);
+  background-color: var(--glass-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Sponsors: Double the Donation employer-match widget. sponsors.html styles it
+   inline with !important, so these selectors are one step more specific. */
+
+#dd-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+body #dd-container div {
+  font-family: var(--font-sans);
+}
+
+body #dd-container .dtd-callout {
+  background-color: var(--tile-bg-on-alt) !important;
+  border-radius: var(--radius-tile) !important;
+}
+
+body #dd-container :is(.lets-check, .mg-forms-button, .mg-guidelines-button) {
+  color: #fff !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  border-radius: 980px !important;
+}
+
+
+/* Footer */
+
+footer.footer {
+  padding: 24px 0 !important;
+  background-color: var(--page-bg-alt) !important;
+  border-top: 1px solid var(--nav-hairline);
+}
+
+/* Scoped to the bar: the Credits dialog is injected into <footer> too */
+footer.footer > .container {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+footer.footer > .container .small {
+  font-size: 12px;
+}
+
+footer.footer > .container a {
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+footer.footer > .container a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+footer.footer > .container i {
+  font-size: 20px !important;
+}
+
+
+/* Credits / thank-you dialogs */
+
+.modal-backdrop.show {
+  opacity: 0.4;
+}
+
+.modal-content {
+  color: var(--text);
+  background-color: var(--page-bg);
+  border: 0;
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+  padding: 24px 24px 0;
+  border-bottom: 0;
+}
+
+.modal-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.modal-header .btn-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background-color: var(--tile-bg);
+  border-radius: 50%;
+  opacity: 1;
+}
+
+
+/* Members login */
+
+.top-bar {
+  font-size: 14px;
+  background-color: var(--nav-bg) !important;
+  border-bottom: 1px solid var(--nav-hairline);
+}
+
+#login-section h2 {
+  margin-bottom: 24px;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.form-control {
+  padding: 12px 16px;
+  font-size: 17px;
+  color: var(--text);
+  background-color: var(--page-bg);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+}
+
+.form-control:focus {
+  color: var(--text);
+  background-color: var(--page-bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.2);
+}
+
+.btn-outline-secondary {
+  color: var(--text-secondary);
+  border-color: var(--hairline);
+  border-radius: 0 12px 12px 0;
+}
+
+#loginForm .btn-primary {
+  padding: 12px 24px;
+  font-size: 17px;
+}
+
+
+/* Scroll-in animations: shorter travel and a slower ease than the AOS defaults */
+
+[data-aos="fade-up"]:not(.aos-animate) {
+  transform: translate3d(0, 32px, 0);
+}
+
+[data-aos="fade-right"]:not(.aos-animate) {
+  transform: translate3d(-32px, 0, 0);
+}
+
+body[data-aos-duration] [data-aos][data-aos] {
+  transition-duration: 900ms;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
