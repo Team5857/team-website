@@ -34,7 +34,9 @@
 	<link href="css/styles.css" rel="stylesheet" />
 
 	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-	<link href="/css/theme.css?v=1" rel="stylesheet" />
+	<link href="/css/theme.css?v=2" rel="stylesheet" />
+	<meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+	<meta name="theme-color" content="#161617" media="(prefers-color-scheme: dark)" />
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </head>
 
@@ -71,7 +73,7 @@
 					</li>
 					<li class="nav-item"><a class="nav-link hover-underline-animation" href="/sponsors">Sponsors</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="/members"><i class="bi bi-person-fill"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="/members" aria-label="Members"><i class="bi bi-person-fill" aria-hidden="true"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -302,13 +304,13 @@
 	
 		<!-- The dots/circles -->
 		<div style="text-align:center">
-			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-			<span class="dot" onclick="currentSlide(1)"></span>
-			<span class="dot" onclick="currentSlide(2)"></span>
-			<span class="dot" onclick="currentSlide(3)"></span>
-			<span class="dot" onclick="currentSlide(4)"></span>
-			<span class="dot" onclick="currentSlide(5)"></span>
-			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			<button type="button" class="prev" onclick="plusSlides(-1)" aria-label="Previous slide">&#10094;</button>
+			<button type="button" class="dot" onclick="currentSlide(1)" aria-label="Slide 1"></button>
+			<button type="button" class="dot" onclick="currentSlide(2)" aria-label="Slide 2"></button>
+			<button type="button" class="dot" onclick="currentSlide(3)" aria-label="Slide 3"></button>
+			<button type="button" class="dot" onclick="currentSlide(4)" aria-label="Slide 4"></button>
+			<button type="button" class="dot" onclick="currentSlide(5)" aria-label="Slide 5"></button>
+			<button type="button" class="next" onclick="plusSlides(1)" aria-label="Next slide">&#10095;</button>
 		</div>
 	</section>
 
@@ -427,20 +429,20 @@
 			<div class="row align-items-center">
 				<div class="col-lg-4 text-lg-start text-muted small">&copy; 2020-<span>
 						<script>document.currentScript.parentElement.innerHTML = new Date().getFullYear()</script>
-					</span> Team 5857 &bull; <a type="button" data-bs-toggle="modal"
-						data-bs-target="#credits">Credits</a></div>
+					</span> Team 5857 &bull; <button type="button" data-bs-toggle="modal"
+						data-bs-target="#credits">Credits</button></div>
 				<div class="col text-lg-end">
 					<ul class="list-inline mb-0">
 						<li class="list-inline-item me-4">
-							<a href="https://www.youtube.com/@walnutvalleyrobotics"><i class="bi-youtube fs-3"></i></a>
+							<a href="https://www.youtube.com/@walnutvalleyrobotics" aria-label="YouTube"><i class="bi-youtube fs-3" aria-hidden="true"></i></a>
 						</li>
 						<li class="list-inline-item me-4">
-							<a href="https://www.facebook.com/WalnutValleyRobotics/"><i
-									class="bi-facebook fs-3"></i></a>
+							<a href="https://www.facebook.com/WalnutValleyRobotics/" aria-label="Facebook"><i
+									class="bi-facebook fs-3" aria-hidden="true"></i></a>
 						</li>
 						<li class="list-inline-item">
-							<a href="https://www.instagram.com/walnutvalleyrobotics/"><i
-									class="bi-instagram fs-3"></i></a>
+							<a href="https://www.instagram.com/walnutvalleyrobotics/" aria-label="Instagram"><i
+									class="bi-instagram fs-3" aria-hidden="true"></i></a>
 						</li>
 					</ul>
 				</div>

@@ -3,46 +3,48 @@
  * Loaded after styles.css and aos.css, and only restyles what is already on
  * each page. Removing the <link> to this file restores the previous look.
  */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
+  color-scheme: light dark;
+
   /* SF Pro on Apple devices, Inter (the closest free match) everywhere else */
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  --page-bg: #ffffff;
+  --page-bg: #fcfcfd;
   --page-bg-alt: #f5f5f7;
-  --tile-bg: #f5f5f7;
-  --tile-bg-on-alt: #ffffff;
+  --surface: #ffffff;
   --text: #1d1d1f;
   --text-secondary: #6e6e73;
+  --text-on-tint: #515154;
   --hairline: #d2d2d7;
-  --accent: #0077b6;
-  --accent-hover: #00669c;
-  --link: #0077b6;
   --nav-bg: rgba(251, 251, 253, 0.8);
   --nav-hairline: rgba(0, 0, 0, 0.08);
   --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-edge: rgba(255, 255, 255, 0.6);
+  --shadow-rgb: 16, 24, 40;
   --scrollbar-thumb: rgba(0, 0, 0, 0.3);
 
-  /* Light-mode stops are dark enough for 3:1 contrast as large text on white */
+  /* Page accents. Each passes 4.5:1 against white text, so buttons can use them. */
   --blue: #0077b6;
-  --sky: #0a9fc0;
-  --violet: #5e5ce6;
-  --purple: #a742d9;
-  --green: #1f9d55;
-  --pink: #e8336b;
-  --orange: #f56300;
-  --amber: #b77f00;
-  --tint-base: #ffffff;
-  --tint-amount: 8%;
-  --band-tint-amount: 5%;
-  --text-on-tint: #5c5c61;
+  --teal: #0b7a7e;
+  --green: #0f7d4a;
+  --orange: #c24e0a;
+  --rose: #c8325b;
+  /* Brighter versions for accent-colored text on dark backgrounds */
+  --blue-bright: #5ec4e8;
+  --teal-bright: #5fd4cf;
+  --green-bright: #4cd68a;
+  --orange-bright: #ff9f5a;
+  --rose-bright: #ff7a9a;
+
+  --tint-amount: 7%;
+  --band-tint-amount: 4%;
 
   --nav-height: 52px;
   --gutter: 22px;
-  --radius-tile: 28px;
-  --radius-card: 22px;
-  --section-space: clamp(72px, 10vw, 128px);
+  --radius: 18px;
+  --section-space: clamp(64px, 8vw, 104px);
 
   /* Bootstrap variables that styles.css reads */
   --bs-body-bg: var(--page-bg);
@@ -54,48 +56,46 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --page-bg: #000000;
+    --page-bg: #0a0a0b;
     --page-bg-alt: #161617;
-    --tile-bg: #1d1d1f;
-    --tile-bg-on-alt: #000000;
+    --surface: #1c1c1e;
     --text: #f5f5f7;
     --text-secondary: #a1a1a6;
+    --text-on-tint: #b4b4b9;
     --hairline: #424245;
-    --link: #5ec4e8;
     --nav-bg: rgba(22, 22, 23, 0.8);
     --nav-hairline: rgba(255, 255, 255, 0.08);
-    --glass-bg: rgba(29, 29, 31, 0.72);
+    --glass-bg: rgba(28, 28, 30, 0.72);
+    --glass-edge: rgba(255, 255, 255, 0.1);
+    --shadow-rgb: 0, 0, 0;
     --scrollbar-thumb: rgba(255, 255, 255, 0.3);
+    --tint-amount: 16%;
+    --band-tint-amount: 8%;
     --bs-light-rgb: 22, 22, 23;
-
-    --blue: #3ba7e6;
-    --sky: #5ed3f3;
-    --violet: #8e8cff;
-    --purple: #da8fff;
-    --green: #30d158;
-    --pink: #ff6482;
-    --orange: #ff9f0a;
-    --amber: #ffd60a;
-    --tint-base: #1d1d1f;
-    --tint-amount: 20%;
-    --band-tint-amount: 10%;
-    --text-on-tint: #b4b4b9;
   }
 }
 
 
-/* Each page gets its own color pair, the way Apple gives each product one.
-   Titles, tiles and bands below read these. */
+/* One accent per page. Its title, links, buttons and tints all use it. */
 
-body                         { --page-from: var(--blue);   --page-to: var(--sky); }
-body:has(> header.abouthead) { --page-from: var(--blue);   --page-to: var(--purple); }
-body:has(> header.wearehead) { --page-from: var(--violet); --page-to: var(--purple); }
-body:has(> header.dvhead)    { --page-from: var(--blue);   --page-to: var(--sky); }
-body:has(> header.hhead)     { --page-from: var(--orange); --page-to: var(--pink); }
-body:has(> header.signhead)  { --page-from: var(--green);  --page-to: var(--sky); }
-body:has(> header.conhead)   { --page-from: var(--pink);   --page-to: var(--purple); }
-body:has(> header.outhead)   { --page-from: var(--blue);   --page-to: var(--violet); }
-body:has(> header.sponhead)  { --page-from: var(--orange); --page-to: var(--amber); }
+body                         { --accent: var(--blue);   --accent-bright: var(--blue-bright); }
+body:has(> header.wearehead) { --accent: var(--teal);   --accent-bright: var(--teal-bright); }
+body:has(> header.hhead)     { --accent: var(--orange); --accent-bright: var(--orange-bright); }
+body:has(> header.signhead)  { --accent: var(--green);  --accent-bright: var(--green-bright); }
+body:has(> header.conhead)   { --accent: var(--rose);   --accent-bright: var(--rose-bright); }
+body:has(> header.sponhead)  { --accent: var(--teal);   --accent-bright: var(--teal-bright); }
+
+/* Declared on body rather than :root so they resolve against the page's accent */
+body {
+  --link: var(--accent);
+  --tile-bg: color-mix(in srgb, var(--accent) var(--tint-amount), var(--surface));
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --link: var(--accent-bright);
+  }
+}
 
 
 /* Base */
@@ -117,6 +117,11 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 600;
   letter-spacing: -0.015em;
   color: inherit;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 h3:empty {
@@ -131,6 +136,13 @@ a {
 a:hover {
   color: var(--link);
   text-decoration: underline;
+}
+
+/* No double-tap zoom delay on anything tappable */
+a,
+button,
+[onclick] {
+  touch-action: manipulation;
 }
 
 :focus-visible {
@@ -182,15 +194,20 @@ hr.divider {
 }
 
 
-/* Buttons */
+/* Buttons: accent pills that press in slightly, as on apple.com */
 
 .btn {
   font-family: var(--font-sans);
   letter-spacing: -0.022em;
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .btn:hover {
   text-decoration: none;
+}
+
+.btn:active {
+  transform: scale(0.96);
 }
 
 .btn-primary,
@@ -200,20 +217,19 @@ hr.divider {
   border-color: var(--accent);
   border-radius: 980px;
   box-shadow: none;
-  transition: background-color 0.2s ease;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:active:focus {
   color: #fff;
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background-color: color-mix(in srgb, var(--accent) 85%, #000);
+  border-color: color-mix(in srgb, var(--accent) 85%, #000);
   box-shadow: none;
 }
 
 .btn-xl {
-  padding: 12px 24px;
+  padding: 11px 22px;
   font-size: 17px;
   font-weight: 400;
   text-transform: none;
@@ -268,8 +284,10 @@ hr.divider {
   display: none;
 }
 
+/* 44px tap target around the menu icon */
 #mainNav .navbar-toggler {
-  padding: 6px;
+  margin-right: -10px;
+  padding: 10px;
   font-size: 22px;
   color: var(--text);
   border: 0;
@@ -277,8 +295,10 @@ hr.divider {
 }
 
 @media (min-width: 992px) {
+  /* Full-height links so the whole bar is clickable, not just the text */
   #mainNav.navbar .navbar-nav .nav-item .nav-link {
     padding: 0 12px;
+    line-height: var(--nav-height);
   }
 }
 
@@ -297,7 +317,7 @@ hr.divider {
 }
 
 
-/* Home hero: full-bleed photo */
+/* Home hero: full-bleed photo with a dark scrim for legibility */
 
 header.masthead {
   height: 100vh;
@@ -306,31 +326,34 @@ header.masthead {
   padding: var(--nav-height) 0 0;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.8) 100%),
-    url("/assets/img/newimg/heros/home.webp") center / cover no-repeat;
+    url("/assets/img/newimg/heros/home-2026.webp") center / cover no-repeat;
+}
+
+/* The drivers sit left of center in this photo; keep them in narrow crops */
+@media (max-width: 767.98px) {
+  header.masthead {
+    background-position: center, 36% center;
+  }
 }
 
 header.masthead h1 {
-  font-size: clamp(44px, 7.2vw, 96px);
-  font-weight: 700;
+  font-size: clamp(40px, 5.6vw, 72px);
+  font-weight: 600;
   line-height: 1.05;
-  letter-spacing: -0.03em;
-  background: linear-gradient(90deg, #ffffff 0%, #bfe6f2 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.025em;
 }
 
 header.masthead p.text-white-75 {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
-  font-size: clamp(19px, 1.8vw, 24px);
-  line-height: 1.38;
+  font-size: clamp(19px, 1.7vw, 21px);
+  line-height: 1.42;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.86) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
 }
 
 
-/* Page headers: headline on the page background, photo as a rounded card below */
+/* Page headers: title in the page accent, then a full-bleed photo */
 
 header.abouthead { --hero-image: url("/assets/img/newimg/heros/about.webp"); }
 header.wearehead { --hero-image: url("/assets/img/newimg/heros/whoarewe.webp"); }
@@ -345,25 +368,18 @@ header.sponhead  { --hero-image: url("/assets/img/newimg/heros/sponsors.webp"); 
     header.signhead, header.conhead, header.outhead, header.sponhead) {
   height: auto;
   min-height: 0;
-  padding: calc(var(--nav-height) + clamp(48px, 7vw, 96px)) 0 0;
+  padding: calc(var(--nav-height) + clamp(40px, 6vw, 80px)) 0 0;
   background: var(--page-bg);
 }
 
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
     header.signhead, header.conhead, header.outhead, header.sponhead) h1 {
-  /* inline-block so the gradient spans the words, not the whole column */
-  display: inline-block;
   margin: 0;
-  padding-bottom: 0.08em;
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--text) !important;
-  background: linear-gradient(90deg, var(--page-from), var(--page-to));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: -0.025em;
+  color: var(--link) !important;
 }
 
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
@@ -371,23 +387,20 @@ header.sponhead  { --hero-image: url("/assets/img/newimg/heros/sponsors.webp"); 
   display: none;
 }
 
-/* Hung off the inner .container so the photo lines up with the tiles below */
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
-    header.signhead, header.conhead, header.outhead, header.sponhead) > .container::after {
+    header.signhead, header.conhead, header.outhead, header.sponhead)::after {
   content: "";
   display: block;
-  margin-top: clamp(32px, 5vw, 56px);
+  margin-top: clamp(32px, 4vw, 48px);
   aspect-ratio: 21 / 9;
-  border-radius: var(--radius-tile);
+  max-height: 70vh;
   background: var(--hero-image) center / cover no-repeat;
-  box-shadow: 0 40px 80px -40px color-mix(in srgb, var(--page-from) 55%, transparent);
 }
 
 @media (max-width: 767.98px) {
   :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
-      header.signhead, header.conhead, header.outhead, header.sponhead) > .container::after {
+      header.signhead, header.conhead, header.outhead, header.sponhead)::after {
     aspect-ratio: 4 / 3;
-    border-radius: var(--radius-card);
   }
 }
 
@@ -408,9 +421,9 @@ header.outhead + .page-section {
   padding: var(--section-space) 0;
 }
 
-/* Gray bands pick up a hint of the page color; the footer stays neutral */
+/* Gray bands pick up a hint of the page accent; the footer stays neutral */
 section.bg-light {
-  background-color: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--band-tint-amount), var(--page-bg-alt)) !important;
+  background-color: color-mix(in srgb, var(--accent) var(--band-tint-amount), var(--page-bg-alt)) !important;
 }
 
 .title-section > h2,
@@ -425,11 +438,11 @@ section.bg-light {
 .title-section h2,
 .title-section > h3,
 #services h2 {
-  margin-bottom: 20px;
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 700;
-  line-height: 1.07;
-  letter-spacing: -0.025em;
+  margin-bottom: 16px;
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .title-section > h3 ~ .container,
@@ -477,18 +490,10 @@ section.bg-light {
   --bs-gutter-x: 0;
   margin: 0 0 24px !important;
   align-items: stretch !important;
-  background: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--tint-amount), var(--tint-base));
-  border-radius: var(--radius-tile);
+  background: var(--tile-bg);
+  border-radius: var(--radius);
   overflow: hidden;
 }
-
-/* The About tiles take the color of the page each one links to */
-body:has(> header.abouthead) .projects-section:nth-of-type(1) { --tile-color: var(--violet); }
-body:has(> header.abouthead) .projects-section:nth-of-type(2) { --tile-color: var(--blue); }
-body:has(> header.abouthead) .projects-section:nth-of-type(3) { --tile-color: var(--orange); }
-
-/* Divisions: Engineering stays blue, Business gets its own color */
-body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet); }
 
 /* divisions and outreach wrap their columns in a second .row */
 :is(.projects-section > .container > .row,
@@ -535,10 +540,10 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
     .title-section > .container > .row.gx-0,
     .mySlides > .container > .row) :is(h2, h4) {
   margin-bottom: 12px;
-  font-size: clamp(26px, 2.6vw, 40px);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   color: var(--text) !important;
 }
 
@@ -579,21 +584,124 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   }
 }
 
+/* Break up runs of identical photo-beside-text tiles (About, Outreach): the
+   second tile in a run flips sides and the third stacks its photo on top. */
+@media (min-width: 992px) {
+  .projects-section + .projects-section > .container > .row,
+  .projects-section + .projects-section > .container > .row > .row {
+    flex-direction: row-reverse;
+  }
 
-/* Home: "We do way more than just robotics" */
+  .projects-section + .projects-section + .projects-section > .container > .row,
+  .projects-section + .projects-section + .projects-section > .container > .row > .row {
+    flex-direction: column;
+  }
+
+  .projects-section + .projects-section + .projects-section > .container > .row [class*="col-"] {
+    width: 100%;
+  }
+
+  .projects-section + .projects-section + .projects-section > .container > .row [class*="col-"]:has(> img) {
+    min-height: 0;
+  }
+
+  .projects-section + .projects-section + .projects-section > .container > .row [class*="col-"] > img {
+    position: static;
+    height: auto;
+    aspect-ratio: 21 / 9;
+  }
+
+  .projects-section + .projects-section + .projects-section > .container > .row [class*="col-"]:not(:has(> img)) {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+}
+
+/* Divisions: a grid of photo-on-top cards instead of seven alternating rows.
+   Business has three, so its first card runs full width beside its photo. */
+@media (min-width: 992px) {
+  body:has(> header.dvhead) .title-section > .container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  body:has(> header.dvhead) .title-section > .container > .row.gx-0 {
+    margin: 0 !important;
+  }
+
+  body:has(> header.dvhead) .title-section > .container > .row.gx-0 > .row {
+    flex-direction: column;
+  }
+
+  body:has(> header.dvhead) .title-section > .container > .row.gx-0 > .row [class*="col-"] {
+    width: 100%;
+  }
+
+  body:has(> header.dvhead) .title-section > .container > .row.gx-0 > .row [class*="col-"]:has(> img) {
+    order: -1;
+    min-height: 0;
+  }
+
+  body:has(> header.dvhead) .title-section > .container > .row.gx-0 > .row [class*="col-"] > img {
+    position: static;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+  body:has(> header.dvhead) .title-section > .container > .row.gx-0 > .row [class*="col-"]:not(:has(> img)) {
+    justify-content: flex-start;
+    padding: 28px 32px 36px;
+  }
+
+  body:has(> header.dvhead) .title-section.bg-light > .container > .row.gx-0:first-child {
+    grid-column: 1 / -1;
+  }
+
+  body:has(> header.dvhead) .title-section.bg-light > .container > .row.gx-0:first-child > .row {
+    flex-direction: row;
+  }
+
+  body:has(> header.dvhead) .title-section.bg-light > .container > .row.gx-0:first-child > .row [class*="col-"] {
+    width: 50%;
+  }
+
+  body:has(> header.dvhead) .title-section.bg-light > .container > .row.gx-0:first-child > .row [class*="col-"]:has(> img) {
+    min-height: 380px;
+  }
+
+  body:has(> header.dvhead) .title-section.bg-light > .container > .row.gx-0:first-child > .row [class*="col-"] > img {
+    position: absolute;
+    height: 100%;
+  }
+
+  body:has(> header.dvhead) .title-section.bg-light > .container > .row.gx-0:first-child > .row [class*="col-"]:not(:has(> img)) {
+    justify-content: center;
+    padding: clamp(28px, 4vw, 56px);
+  }
+}
+
+
+/* Home: "We do way more than just robotics" as a 2 + 3 grid. The first
+   tile carries the accent at full strength; the rest are tinted. */
 
 #services .row {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 16px;
   margin: 48px 0 0;
 }
 
 #services .row > * {
+  grid-column: span 2;
   width: auto;
   max-width: none;
   margin: 0;
   padding: 0;
+}
+
+#services .row > :nth-child(-n + 2) {
+  grid-column: span 3;
 }
 
 #services .row > * > div {
@@ -604,33 +712,40 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   height: 100%;
   margin: 0 !important;
   padding: 36px 24px;
-  background: color-mix(in srgb, var(--tile-color) var(--tint-amount), var(--tint-base));
-  border-radius: var(--radius-card);
+  background: var(--tile-bg);
+  border-radius: var(--radius);
 }
 
-#services .row > :nth-child(1) { --tile-color: var(--blue); }
-#services .row > :nth-child(2) { --tile-color: var(--violet); }
-#services .row > :nth-child(3) { --tile-color: var(--green); }
-#services .row > :nth-child(4) { --tile-color: var(--pink); }
-#services .row > :nth-child(5) { --tile-color: var(--orange); }
+#services .row > :first-child > div {
+  background: var(--accent);
+}
 
 #services i {
   font-size: 40px !important;
   line-height: 1;
-  color: var(--tile-color) !important;
 }
 
 /* The paragraphs set font-size inline */
 #services p {
   font-size: 17px !important;
-  font-weight: 500;
-  line-height: 1.35;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
   color: var(--text) !important;
+}
+
+#services .row > :first-child :is(i, p) {
+  color: #fff !important;
 }
 
 @media (max-width: 991.98px) {
   #services .row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #services .row > *,
+  #services .row > :nth-child(-n + 2) {
+    grid-column: auto;
   }
 
   #services .row > :last-child {
@@ -659,44 +774,40 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   }
 }
 
-/* Home: "Get to know us!" as a full-color band. The stops keep white text
-   at 3:1 or better for the large headline. */
+/* Home: "Get to know us!" as a solid accent band */
 #services + .title-section {
   color: #fff;
-  background: linear-gradient(120deg, #0062a8 0%, #0b8fb5 50%, #1c9a74 100%) !important;
+  background: var(--accent) !important;
 }
 
 #services + .title-section .btn-xl {
   margin: 6px 4px;
-  color: #0062a8;
+  color: var(--accent);
   background-color: #fff;
   border-color: #fff;
 }
 
 #services + .title-section .btn-xl:hover {
-  color: #0062a8;
-  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--accent);
+  background-color: rgba(255, 255, 255, 0.88);
   border-color: transparent;
 }
 
 
 /* Get Involved: photo with a frosted card over it */
 
-/* Soft color glows behind the photo, which the frosted card then blurs */
 .cta {
   padding: var(--section-space) 0;
-  background:
-    radial-gradient(40% 50% at 12% 35%, color-mix(in srgb, var(--page-from) 35%, transparent), transparent 70%),
-    radial-gradient(40% 50% at 88% 70%, color-mix(in srgb, var(--page-to) 35%, transparent), transparent 70%);
 }
 
 .intro .intro-img {
   max-width: 100%;
   border: 0 !important;
-  border-radius: var(--radius-tile) !important;
+  border-radius: var(--radius) !important;
   box-shadow: none !important;
 }
 
+/* Glass needs an edge and a top highlight to read as a physical pane */
 .cta .cta-inner {
   margin: 0;
   padding: clamp(32px, 4vw, 56px) !important;
@@ -704,9 +815,12 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   background-color: var(--glass-bg) !important;
   -webkit-backdrop-filter: saturate(180%) blur(30px);
   backdrop-filter: saturate(180%) blur(30px);
-  border: 0;
-  border-radius: var(--radius-tile) !important;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.14);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius) !important;
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    0 1px 2px rgba(var(--shadow-rgb), 0.06),
+    0 24px 60px rgba(var(--shadow-rgb), 0.14);
 }
 
 .cta .cta-inner::before {
@@ -714,9 +828,9 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 .cta .cta-inner h3 {
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 700;
-  line-height: 1.1;
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 600;
+  line-height: 1.12;
   letter-spacing: -0.02em;
 }
 
@@ -764,8 +878,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 .timeline::before {
   width: 2px;
   margin-left: -1px;
-  background: linear-gradient(180deg, var(--page-from), var(--page-to));
-  opacity: 0.6;
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .timeline > li .timeline-image {
@@ -775,8 +888,9 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   border: 0;
   box-shadow:
     0 0 0 5px var(--page-bg),
-    0 0 0 7px color-mix(in srgb, var(--page-from) 60%, transparent),
-    0 10px 30px rgba(0, 0, 0, 0.15);
+    0 0 0 7px color-mix(in srgb, var(--accent) 55%, transparent),
+    0 2px 4px rgba(var(--shadow-rgb), 0.08),
+    0 12px 30px rgba(var(--shadow-rgb), 0.16);
 }
 
 .timeline > li .timeline-image img {
@@ -786,32 +900,24 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 .timeline > li:last-child .timeline-image {
-  background: linear-gradient(135deg, var(--page-from) 0%, var(--page-to) 100%);
+  background: var(--accent);
 }
 
 .timeline .timeline-heading h4 {
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-}
-
-/* The years: inline-block so the gradient spans the digits */
-.timeline .timeline-heading h4:not(.subheading) {
-  display: inline-block;
-  color: var(--page-from);
-  background: linear-gradient(90deg, var(--page-from), var(--page-to));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--link);
+  font-variant-numeric: tabular-nums;
 }
 
 .timeline .timeline-heading h4.subheading {
   margin-bottom: 8px;
   font-size: 21px;
-  font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text);
+  font-variant-numeric: normal;
 }
 
 .timeline .timeline-body > p {
@@ -819,18 +925,12 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 
-/* Contact cards */
+/* Contact cards. No hover lift: only the link inside is clickable. */
 
 .card {
   background-color: var(--tile-bg);
   border: 0;
-  border-radius: var(--radius-card);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
 }
 
 .card-body hr {
@@ -840,7 +940,6 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 .card-body h4 {
   margin: 8px 0 6px !important;
   font-size: 24px;
-  font-weight: 600;
 }
 
 .card-body .small {
@@ -848,7 +947,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 /* Each platform's own color. The icons carry .text-primary (!important). */
-.card-body .bi-envelope { color: var(--blue) !important; }
+.card-body .bi-envelope { color: var(--link) !important; }
 .card-body .bi-youtube  { color: #ff0033 !important; }
 .card-body .bi-facebook { color: #1877f2 !important; }
 
@@ -874,30 +973,41 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 
 /* Outreach slideshow */
 
+/* The counter sits in this padding, above the slide rather than on its photo.
+   Padding (not the slide's margin) so the margin can't collapse past it. */
+.slideshow-container {
+  padding-top: 36px;
+}
+
 .mySlides > .container {
+  margin-top: 0 !important;
   padding-left: var(--gutter) !important;
   padding-right: var(--gutter) !important;
 }
 
 .numbertext {
-  z-index: 2;
-  top: calc(3rem + 16px);
-  left: calc(var(--gutter) + 16px);
-  padding: 4px 10px;
-  font-size: 12px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.55);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-radius: 980px;
+  top: 6px;
+  left: 0;
+  right: 0;
+  padding: 0;
+  font-size: 13px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
 }
 
+/* 8px dots inside a 24px tap target */
 .dot {
   width: 8px;
   height: 8px;
-  margin: 0 5px;
+  margin: 0;
+  padding: 8px;
+  box-sizing: content-box;
   vertical-align: middle;
   background-color: var(--hairline);
+  background-clip: content-box;
+  border: 0;
+  border-radius: 12px;
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
@@ -907,8 +1017,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 
 .dot.active {
   width: 24px;
-  background-color: var(--page-from);
-  border-radius: 4px;
+  background-color: var(--link);
 }
 
 .prev,
@@ -916,22 +1025,29 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   margin: 0 12px;
   padding: 0;
   font-size: 14px;
   vertical-align: middle;
   color: var(--text);
   background-color: var(--tile-bg);
+  border: 0;
   border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .prev:hover,
 .next:hover {
   color: var(--text);
-  background-color: var(--hairline);
+  background-color: color-mix(in srgb, var(--accent) 16%, var(--surface));
   text-decoration: none;
+}
+
+.prev:active,
+.next:active {
+  transform: scale(0.94);
 }
 
 
@@ -952,7 +1068,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   margin: 0 8px;
   /* Light in both modes so dark logos stay readable */
   background-color: #f5f5f7;
-  border-radius: var(--radius-card);
+  border-radius: var(--radius);
 }
 
 .glide__slide > a > img {
@@ -975,8 +1091,13 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   background-color: var(--glass-bg);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--nav-hairline);
   border-radius: 50%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease;
+}
+
+.slider__arrow.glide__arrow:active {
+  transform: scale(0.94);
 }
 
 
@@ -994,8 +1115,8 @@ body #dd-container div {
 }
 
 body #dd-container .dtd-callout {
-  background-color: var(--tile-bg-on-alt) !important;
-  border-radius: var(--radius-tile) !important;
+  background-color: var(--surface) !important;
+  border-radius: var(--radius) !important;
 }
 
 body #dd-container :is(.lets-check, .mg-forms-button, .mg-guidelines-button) {
@@ -1024,14 +1145,23 @@ footer.footer > .container .small {
   font-size: 12px;
 }
 
-footer.footer > .container a {
+footer.footer > .container :is(a, button) {
   color: var(--text-secondary);
   cursor: pointer;
 }
 
-footer.footer > .container a:hover {
+footer.footer > .container :is(a, button):hover {
   color: var(--text);
   text-decoration: none;
+}
+
+/* "Credits" is a button so keyboards can reach it; make it read as a link */
+footer.footer > .container button[data-bs-toggle="modal"] {
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  background: none;
+  border: 0;
 }
 
 footer.footer > .container i {
@@ -1041,6 +1171,10 @@ footer.footer > .container i {
 
 /* Credits / thank-you dialogs */
 
+.modal {
+  overscroll-behavior: contain;
+}
+
 .modal-backdrop.show {
   opacity: 0.4;
 }
@@ -1049,8 +1183,8 @@ footer.footer > .container i {
   color: var(--text);
   background-color: var(--page-bg);
   border: 0;
-  border-radius: var(--radius-card);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(var(--shadow-rgb), 0.08), 0 24px 80px rgba(var(--shadow-rgb), 0.25);
 }
 
 .modal-header {
@@ -1060,7 +1194,6 @@ footer.footer > .container i {
 
 .modal-title {
   font-size: 28px;
-  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -1090,30 +1223,29 @@ footer.footer > .container i {
 #login-section h2 {
   margin-bottom: 24px;
   font-size: clamp(32px, 5vw, 48px);
-  font-weight: 700;
   letter-spacing: -0.025em;
 }
 
 .form-control {
-  padding: 12px 16px;
+  padding: 12px 20px;
   font-size: 17px;
   color: var(--text);
-  background-color: var(--page-bg);
+  background-color: var(--surface);
   border: 1px solid var(--hairline);
-  border-radius: 12px;
+  border-radius: 980px;
 }
 
 .form-control:focus {
   color: var(--text);
-  background-color: var(--page-bg);
+  background-color: var(--surface);
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.2);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .btn-outline-secondary {
   color: var(--text-secondary);
   border-color: var(--hairline);
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 980px 980px 0;
 }
 
 #loginForm .btn-primary {
@@ -1144,7 +1276,27 @@ body[data-aos-duration] [data-aos][data-aos] {
     transition: none !important;
   }
 
-  .card:hover {
+  .btn:active,
+  .prev:active,
+  .next:active,
+  .slider__arrow.glide__arrow:active {
     transform: none;
+  }
+}
+
+/* Solid fallbacks for people who turn transparency off */
+@media (prefers-reduced-transparency: reduce) {
+  #mainNav,
+  .top-bar {
+    background-color: var(--page-bg) !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .cta .cta-inner,
+  .slider__arrow.glide__arrow {
+    background-color: var(--surface) !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
