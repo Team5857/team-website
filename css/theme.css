@@ -1,118 +1,89 @@
 /*
- * Apple-inspired look for wvr5857.org.
+ * "Competition night" look for wvr5857.org (design-v2 branch).
+ * Team colors only: pit navy from the team shirts, sky blue from the WVR
+ * logo. Big Shoulders Display (condensed, like FRC bumper numbers) sets the
+ * page titles; Geist sets everything else.
  * Loaded after styles.css and aos.css, and only restyles what is already on
- * each page. Removing the <link> to this file restores the previous look.
+ * each page. Removing the <link> to this file restores the original look.
  */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Geist:wght@400;500;600&display=swap');
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark light;
 
-  /* SF Pro on Apple devices, Inter (the closest free match) everywhere else */
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-text: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --page-bg: #fcfcfd;
-  --page-bg-alt: #f5f5f7;
-  --surface: #ffffff;
-  --text: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-on-tint: #515154;
-  --hairline: #d2d2d7;
-  --nav-bg: rgba(251, 251, 253, 0.8);
-  --nav-hairline: rgba(0, 0, 0, 0.08);
-  --glass-bg: rgba(255, 255, 255, 0.72);
-  --glass-edge: rgba(255, 255, 255, 0.6);
-  --shadow-rgb: 16, 24, 40;
-  --scrollbar-thumb: rgba(0, 0, 0, 0.3);
+  /* Night (default) */
+  --page-bg: #0d1b30;
+  --page-bg-alt: #112240;
+  --surface: #16294a;
+  --footer-bg: #0a1627;
+  --text: #eef3f8;
+  --text-secondary: #a9b7cc;
+  --hairline: rgba(143, 214, 238, 0.16);
+  --accent: #8fd6ee;
+  --accent-hover: #b6e6f6;
+  --on-accent: #0d1b30;
+  --link: #8fd6ee;
+  --nav-bg: rgba(13, 27, 48, 0.84);
+  --shadow-rgb: 3, 8, 18;
+  --scrollbar-thumb: rgba(143, 214, 238, 0.35);
 
-  /* Buttons, links and focus rings stay the same blue on every page */
-  --accent: #0077b6;
-  --link: #0077b6;
+  /* Photos keep a navy scrim in both modes so the white titles stay readable */
+  --scrim-rgb: 13, 27, 48;
+  --on-photo: #eef3f8;
 
-  /* Gradient palette. Light-mode stops are dark enough for 3:1 contrast as
-     large text on white. */
-  --blue: #0077b6;
-  --sky: #0a9fc0;
-  --violet: #5e5ce6;
-  --purple: #a742d9;
-  --green: #1f9d55;
-  --pink: #e8336b;
-  --orange: #f56300;
-  --amber: #b77f00;
-
-  --tint-amount: 8%;
-  --band-tint-amount: 5%;
-
-  --nav-height: 52px;
+  --nav-height: 60px;
   --gutter: 22px;
-  --radius: 18px;
-  --section-space: clamp(64px, 8vw, 104px);
+  --radius: 6px;
+  --section-space: clamp(64px, 8vw, 112px);
+
+  /* Left edge of Bootstrap's .container content, for blocks that sit
+     outside a container but should line up with one */
+  --content-inset: var(--gutter);
 
   /* Bootstrap variables that styles.css reads */
   --bs-body-bg: var(--page-bg);
   --bs-body-color: var(--text);
-  --bs-light-rgb: 245, 245, 247;
-  --bs-body-font-family: var(--font-sans);
-  --bs-font-sans-serif: var(--font-sans);
+  --bs-light-rgb: 17, 34, 64;
+  --bs-body-font-family: var(--font-text);
+  --bs-font-sans-serif: var(--font-text);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --page-bg: #0a0a0b;
-    --page-bg-alt: #161617;
-    --surface: #1c1c1e;
-    --text: #f5f5f7;
-    --text-secondary: #a1a1a6;
-    --text-on-tint: #b4b4b9;
-    --hairline: #424245;
-    --nav-bg: rgba(22, 22, 23, 0.8);
-    --nav-hairline: rgba(255, 255, 255, 0.08);
-    --glass-bg: rgba(28, 28, 30, 0.72);
-    --glass-edge: rgba(255, 255, 255, 0.1);
-    --shadow-rgb: 0, 0, 0;
-    --scrollbar-thumb: rgba(255, 255, 255, 0.3);
-    --link: #5ec4e8;
-    --blue: #3ba7e6;
-    --sky: #5ed3f3;
-    --violet: #8e8cff;
-    --purple: #da8fff;
-    --green: #30d158;
-    --pink: #ff6482;
-    --orange: #ff9f0a;
-    --amber: #ffd60a;
-    --tint-amount: 20%;
-    --band-tint-amount: 10%;
-    --bs-light-rgb: 22, 22, 23;
+    --page-bg: #f4f7fb;
+    --page-bg-alt: #e9eff6;
+    --surface: #fdfeff;
+    --footer-bg: #e3eaf3;
+    --text: #0d1b30;
+    --text-secondary: #4a5a72;
+    --hairline: rgba(13, 27, 48, 0.12);
+    --accent: #0f6e94;
+    --accent-hover: #0b5a7a;
+    --on-accent: #fdfeff;
+    --link: #0f6e94;
+    --nav-bg: rgba(244, 247, 251, 0.86);
+    --shadow-rgb: 13, 27, 48;
+    --scrollbar-thumb: rgba(13, 27, 48, 0.3);
+    --bs-light-rgb: 233, 239, 246;
   }
 }
 
-
-/* Each page gets its own color pair, the way Apple gives each product one.
-   Titles, tiles and bands below read these. */
-
-body                         { --page-from: var(--blue);   --page-to: var(--sky); }
-body:has(> header.abouthead) { --page-from: var(--blue);   --page-to: var(--purple); }
-body:has(> header.wearehead) { --page-from: var(--violet); --page-to: var(--purple); }
-body:has(> header.dvhead)    { --page-from: var(--blue);   --page-to: var(--sky); }
-body:has(> header.hhead)     { --page-from: var(--orange); --page-to: var(--pink); }
-body:has(> header.signhead)  { --page-from: var(--green);  --page-to: var(--sky); }
-body:has(> header.conhead)   { --page-from: var(--pink);   --page-to: var(--purple); }
-body:has(> header.outhead)   { --page-from: var(--blue);   --page-to: var(--violet); }
-body:has(> header.sponhead)  { --page-from: var(--orange); --page-to: var(--amber); }
-
-/* Declared on body rather than :root so it resolves against the page's colors */
-body {
-  --tile-bg: color-mix(in srgb, var(--page-from) var(--tint-amount), var(--surface));
-}
+@media (min-width: 576px)  { :root { --content-inset: calc((100% - 540px) / 2 + 24px); } }
+@media (min-width: 768px)  { :root { --content-inset: calc((100% - 720px) / 2 + 24px); } }
+@media (min-width: 992px)  { :root { --content-inset: calc((100% - 960px) / 2 + 48px); } }
+@media (min-width: 1200px) { :root { --content-inset: calc((100% - 1140px) / 2 + 48px); } }
+@media (min-width: 1400px) { :root { --content-inset: calc((100% - 1320px) / 2 + 48px); } }
 
 
 /* Base */
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
   font-size: 17px;
-  line-height: 1.47059;
-  letter-spacing: -0.022em;
+  line-height: 1.6;
   color: var(--text);
   background-color: var(--page-bg);
   -webkit-font-smoothing: antialiased;
@@ -121,9 +92,9 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   color: inherit;
   text-wrap: balance;
 }
@@ -144,9 +115,9 @@ a {
 a:hover {
   color: var(--link);
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-/* No double-tap zoom delay on anything tappable */
 a,
 button,
 [onclick] {
@@ -154,7 +125,7 @@ button,
 }
 
 :focus-visible {
-  outline: 2px solid var(--link);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -180,7 +151,6 @@ hr.divider {
   display: none;
 }
 
-/* Chrome reads the standard properties; Safari only reads the -webkit- ones */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) transparent;
@@ -202,12 +172,13 @@ hr.divider {
 }
 
 
-/* Buttons: accent pills that press in slightly, as on apple.com */
+/* Buttons: one radius with the panels, press down on click */
 
 .btn {
-  font-family: var(--font-sans);
-  letter-spacing: -0.022em;
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  font-family: var(--font-text);
+  font-weight: 600;
+  letter-spacing: 0;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .btn:hover {
@@ -215,33 +186,38 @@ hr.divider {
 }
 
 .btn:active {
-  transform: scale(0.96);
+  transform: translateY(1px);
 }
 
 .btn-primary,
 .btn-primary:focus {
-  color: #fff;
+  color: var(--on-accent);
   background-color: var(--accent);
   border-color: var(--accent);
-  border-radius: 980px;
+  border-radius: var(--radius);
   box-shadow: none;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:active:focus {
-  color: #fff;
-  background-color: color-mix(in srgb, var(--accent) 85%, #000);
-  border-color: color-mix(in srgb, var(--accent) 85%, #000);
+  color: var(--on-accent);
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
   box-shadow: none;
 }
 
 .btn-xl {
-  padding: 11px 22px;
-  font-size: 17px;
-  font-weight: 400;
+  padding: 14px 26px;
+  font-size: 16px;
   text-transform: none;
-  border-radius: 980px;
+  border-radius: var(--radius);
+}
+
+/* styles.css gives a.btn-primary a 2rem side margin, which shows once
+   the text beside it is left-aligned */
+.intro-button a.btn.btn-primary {
+  margin: 0;
 }
 
 
@@ -251,9 +227,9 @@ hr.divider {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   background-color: var(--nav-bg) !important;
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--nav-hairline);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  backdrop-filter: saturate(140%) blur(16px);
+  border-bottom: 1px solid var(--hairline);
   box-shadow: none !important;
 }
 
@@ -265,22 +241,19 @@ hr.divider {
 #mainNav .logo img {
   display: block;
   width: auto !important;
-  height: 30px !important;
+  height: 34px !important;
 }
 
 #mainNav.navbar .navbar-nav .nav-item .nav-link {
-  color: var(--text);
-  opacity: 0.8;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  transition: opacity 0.2s ease;
+  color: var(--text-secondary);
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 #mainNav.navbar .navbar-nav .nav-item .nav-link:hover {
   color: var(--text);
-  opacity: 1;
   text-decoration: none;
 }
 
@@ -292,80 +265,107 @@ hr.divider {
   display: none;
 }
 
-/* 44px tap target around the menu icon */
 #mainNav .navbar-toggler {
   margin-right: -10px;
   padding: 10px;
-  font-size: 22px;
+  font-size: 24px;
   color: var(--text);
   border: 0;
   box-shadow: none;
 }
 
 @media (min-width: 992px) {
-  /* Full-height links so the whole bar is clickable, not just the text */
   #mainNav.navbar .navbar-nav .nav-item .nav-link {
-    padding: 0 12px;
+    padding: 0 14px;
     line-height: var(--nav-height);
   }
 }
 
+/* On phones the open menu is set in the display face, like a pit banner */
 @media (max-width: 991.98px) {
   #mainNav .navbar-nav {
-    padding: 8px 0 24px;
+    padding: 8px 0 28px;
   }
 
   #mainNav.navbar .navbar-nav .nav-item .nav-link {
-    padding: 10px 0;
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    opacity: 1;
+    padding: 6px 0;
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: var(--text);
   }
 }
 
 
-/* Home hero: full-bleed photo with a dark scrim for legibility */
+/* Home hero: headline on the left, the photo opens up on the right */
 
 header.masthead {
   height: 100vh;
   height: 100svh;
-  min-height: 600px;
+  min-height: 620px;
   padding: var(--nav-height) 0 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.8) 100%),
-    url("/assets/img/newimg/heros/home-2026.webp") center / cover no-repeat;
+    linear-gradient(90deg,
+      rgba(var(--scrim-rgb), 0.96) 0%,
+      rgba(var(--scrim-rgb), 0.85) 36%,
+      rgba(var(--scrim-rgb), 0.3) 72%,
+      rgba(var(--scrim-rgb), 0.15) 100%),
+    url("/assets/img/newimg/heros/home-2026.webp") 65% center / cover no-repeat;
 }
 
-/* The drivers sit left of center in this photo; keep them in narrow crops */
-@media (max-width: 767.98px) {
-  header.masthead {
-    background-position: center, 36% center;
-  }
+header.masthead .row {
+  justify-content: flex-start !important;
+  text-align: left !important;
 }
 
-header.masthead h1 {
-  font-size: clamp(40px, 5.6vw, 72px);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  background: linear-gradient(90deg, #ffffff 0%, #bfe6f2 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+header.masthead h1.text-white {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7.6vw, 104px);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--on-photo) !important;
 }
 
 header.masthead p.text-white-75 {
-  max-width: 720px;
-  margin: 0 auto;
-  font-size: clamp(19px, 1.7vw, 21px);
-  line-height: 1.42;
-  letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.88) !important;
+  max-width: 560px;
+  margin: 0;
+  font-size: clamp(17px, 1.5vw, 19px);
+  line-height: 1.55;
+  color: rgba(238, 243, 248, 0.86) !important;
+}
+
+/* The one orchestrated motion on the site: the intro settles in on load */
+@media (prefers-reduced-motion: no-preference) {
+  header.masthead p.text-white-75 {
+    animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  header.masthead {
+    background:
+      linear-gradient(180deg,
+        rgba(var(--scrim-rgb), 0.6) 0%,
+        rgba(var(--scrim-rgb), 0.82) 55%,
+        rgba(var(--scrim-rgb), 0.95) 100%),
+      url("/assets/img/newimg/heros/home-2026.webp") 36% center / cover no-repeat;
+  }
 }
 
 
-/* Page headers: title in the page's gradient, then a full-bleed photo */
+/* Page headers: the photo fills the top, the title sits in its lower left */
 
 header.abouthead { --hero-image: url("/assets/img/newimg/heros/about.webp"); }
 header.wearehead { --hero-image: url("/assets/img/newimg/heros/whoarewe.webp"); }
@@ -378,53 +378,46 @@ header.sponhead  { --hero-image: url("/assets/img/newimg/heros/sponsors.webp"); 
 
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
     header.signhead, header.conhead, header.outhead, header.sponhead) {
+  display: flex;
+  align-items: flex-end;
   height: auto;
-  min-height: 0;
-  padding: calc(var(--nav-height) + clamp(40px, 6vw, 80px)) 0 0;
-  background: var(--page-bg);
+  min-height: clamp(400px, 64vh, 660px);
+  padding: calc(var(--nav-height) + 48px) 0 clamp(28px, 4vw, 48px);
+  background:
+    linear-gradient(0deg,
+      rgba(var(--scrim-rgb), 0.94) 0%,
+      rgba(var(--scrim-rgb), 0.4) 45%,
+      rgba(var(--scrim-rgb), 0.15) 100%),
+    var(--hero-image) center / cover no-repeat;
+}
+
+:is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
+    header.signhead, header.conhead, header.outhead, header.sponhead) > .container {
+  width: 100%;
+}
+
+:is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
+    header.signhead, header.conhead, header.outhead, header.sponhead) .row {
+  height: auto !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
 }
 
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
     header.signhead, header.conhead, header.outhead, header.sponhead) h1 {
-  /* inline-block so the gradient spans the words, not the whole column */
-  display: inline-block;
   margin: 0;
-  padding-bottom: 0.08em;
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 600;
-  line-height: 1.07;
-  letter-spacing: -0.025em;
-  color: var(--text) !important;
-  background: linear-gradient(90deg, var(--page-from), var(--page-to));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(60px, 9.5vw, 148px);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--on-photo) !important;
 }
 
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
     header.signhead, header.conhead, header.outhead, header.sponhead) p:empty {
   display: none;
-}
-
-:is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
-    header.signhead, header.conhead, header.outhead, header.sponhead)::after {
-  content: "";
-  display: block;
-  /* Explicit width: without it, max-height shrinks the width through the
-     aspect ratio and the photo sits left of center on wide screens */
-  width: 100%;
-  margin-top: clamp(32px, 4vw, 48px);
-  aspect-ratio: 21 / 9;
-  max-height: 70vh;
-  background: var(--hero-image) center / cover no-repeat;
-  box-shadow: 0 40px 80px -40px color-mix(in srgb, var(--page-from) 55%, transparent);
-}
-
-@media (max-width: 767.98px) {
-  :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
-      header.signhead, header.conhead, header.outhead, header.sponhead)::after {
-    aspect-ratio: 4 / 3;
-  }
 }
 
 /* contact.html zeroes this section's padding inline */
@@ -433,7 +426,7 @@ header.outhead + .page-section {
 }
 
 
-/* Sections */
+/* Sections: everything lines up on the left edge of the content column */
 
 .page-section {
   margin: 0;
@@ -444,45 +437,61 @@ header.outhead + .page-section {
   padding: var(--section-space) 0;
 }
 
-/* Gray bands pick up a hint of the page color; the footer stays neutral */
 section.bg-light {
-  background-color: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--band-tint-amount), var(--page-bg-alt)) !important;
+  background-color: var(--page-bg-alt) !important;
 }
 
 .title-section > h2,
 .title-section > h3,
 .title-section > p {
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--gutter);
+  padding-left: var(--content-inset);
+  padding-right: var(--content-inset);
+  text-align: left !important;
 }
 
+.title-section .row.justify-content-center {
+  justify-content: flex-start !important;
+}
+
+.title-section .text-center {
+  text-align: left !important;
+}
+
+/* Section titles use the display face too, in sentence case */
 .title-section h2,
 .title-section > h3,
 #services h2 {
   margin-bottom: 16px;
-  font-size: clamp(30px, 3.6vw, 44px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.8vw, 64px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+}
+
+#services h2 {
+  text-align: left !important;
 }
 
 .title-section > h3 ~ .container,
 .title-section > h3 ~ .glide,
 .title-section > h3 ~ .slideshow-container {
-  margin-top: 40px;
+  margin-top: 36px;
 }
 
 .title-section > p {
-  max-width: 680px;
+  max-width: none;
   font-size: 17px;
 }
 
+.title-section > p.small {
+  max-width: calc(680px + 2 * var(--content-inset));
+}
+
 .title-section .col-lg-8 > p {
-  font-size: clamp(19px, 1.6vw, 21px);
-  line-height: 1.42;
-  letter-spacing: -0.01em;
+  max-width: 68ch;
+  font-size: clamp(18px, 1.5vw, 20px);
+  line-height: 1.6;
 }
 
 .projects-section {
@@ -493,8 +502,10 @@ section.bg-light {
   padding-top: 48px;
 }
 
-.featured-text {
+.featured-text,
+.featured-text.text-center {
   padding: 0 !important;
+  text-align: left !important;
   border: 0 !important;
 }
 
@@ -503,7 +514,7 @@ section.bg-light {
 }
 
 
-/* Feature tiles. Three markups share this look: .projects-section rows
+/* Feature panels. Three markups share this look: .projects-section rows
    (about, sponsors, outreach), .title-section rows (divisions) and the
    outreach slideshow (.mySlides). */
 
@@ -511,20 +522,13 @@ section.bg-light {
     .title-section > .container > .row.gx-0,
     .mySlides > .container > .row) {
   --bs-gutter-x: 0;
-  margin: 0 0 24px !important;
+  margin: 0 0 20px !important;
   align-items: stretch !important;
-  background: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--tint-amount), var(--surface));
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius);
   overflow: hidden;
 }
-
-/* The About tiles take the color of the page each one links to */
-body:has(> header.abouthead) .projects-section:nth-of-type(1) { --tile-color: var(--violet); }
-body:has(> header.abouthead) .projects-section:nth-of-type(2) { --tile-color: var(--blue); }
-body:has(> header.abouthead) .projects-section:nth-of-type(3) { --tile-color: var(--orange); }
-
-/* Divisions: Engineering stays blue, Business gets its own color */
-body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet); }
 
 /* divisions and outreach wrap their columns in a second .row */
 :is(.projects-section > .container > .row,
@@ -565,16 +569,16 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   flex-direction: column;
   justify-content: center;
   padding: clamp(28px, 4vw, 56px);
+  text-align: left !important;
 }
 
 :is(.projects-section > .container > .row,
     .title-section > .container > .row.gx-0,
     .mySlides > .container > .row) :is(h2, h4) {
   margin-bottom: 12px;
-  font-size: clamp(24px, 2.4vw, 32px);
+  font-size: clamp(24px, 2.3vw, 30px);
   font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.015em;
   color: var(--text) !important;
 }
 
@@ -582,14 +586,14 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
     .title-section > .container > .row.gx-0,
     .mySlides > .container > .row) p {
   font-size: 17px;
-  line-height: 1.47;
-  color: var(--text-on-tint) !important;
+  line-height: 1.6;
+  color: var(--text-secondary) !important;
 }
 
 :is(.projects-section > .container > .row,
     .title-section > .container > .row.gx-0,
     .mySlides > .container > .row) .intro-button {
-  margin-top: 8px;
+  margin: 8px 0 0 !important;
 }
 
 @media (max-width: 991.98px) {
@@ -615,8 +619,8 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   }
 }
 
-/* Break up runs of identical photo-beside-text tiles (About, Outreach): the
-   second tile in a run flips sides and the third stacks its photo on top. */
+/* Break up runs of identical photo-beside-text panels (About, Outreach): the
+   second panel in a run flips sides and the third stacks its photo on top. */
 @media (min-width: 992px) {
   .projects-section + .projects-section > .container > .row,
   .projects-section + .projects-section > .container > .row > .row {
@@ -644,7 +648,6 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 
   .projects-section + .projects-section + .projects-section > .container > .row [class*="col-"]:not(:has(> img)) {
     max-width: 760px;
-    margin: 0 auto;
   }
 }
 
@@ -654,7 +657,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   body:has(> header.dvhead) .title-section > .container {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    gap: 20px;
   }
 
   body:has(> header.dvhead) .title-section > .container > .row.gx-0 {
@@ -713,14 +716,14 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 
-/* Home: "We do way more than just robotics" as a 2 + 3 grid, each tile in
-   its own color. */
+/* Home: "We do way more than just robotics" as a 2 + 3 grid. The first
+   panel is filled with the sky accent; the rest are navy panels. */
 
 #services .row {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 16px;
-  margin: 48px 0 0;
+  margin: 40px 0 0;
 }
 
 #services .row > * {
@@ -729,6 +732,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   max-width: none;
   margin: 0;
   padding: 0;
+  text-align: left !important;
 }
 
 #services .row > :nth-child(-n + 2) {
@@ -738,34 +742,41 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 #services .row > * > div {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 20px;
   height: 100%;
   margin: 0 !important;
-  padding: 36px 24px;
-  background: color-mix(in srgb, var(--tile-color) var(--tint-amount), var(--surface));
+  padding: 28px 26px 30px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius);
 }
 
-#services .row > :nth-child(1) { --tile-color: var(--blue); }
-#services .row > :nth-child(2) { --tile-color: var(--violet); }
-#services .row > :nth-child(3) { --tile-color: var(--green); }
-#services .row > :nth-child(4) { --tile-color: var(--pink); }
-#services .row > :nth-child(5) { --tile-color: var(--orange); }
+#services .row > * > div > .mb-2 {
+  margin: 0 !important;
+}
+
+#services .row > :first-child > div {
+  background: var(--accent);
+  border-color: var(--accent);
+}
 
 #services i {
-  font-size: 40px !important;
+  font-size: 34px !important;
   line-height: 1;
-  color: var(--tile-color) !important;
+  color: var(--link) !important;
 }
 
 /* The paragraphs set font-size inline */
 #services p {
-  font-size: 17px !important;
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.015em;
+  font-size: 19px !important;
+  font-weight: 500;
+  line-height: 1.35;
   color: var(--text) !important;
+}
+
+#services .row > :first-child :is(i, p) {
+  color: var(--on-accent) !important;
 }
 
 @media (max-width: 991.98px) {
@@ -791,48 +802,36 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 
   #services .row > * > div {
     flex-direction: row;
+    align-items: center;
+    gap: 18px;
     padding: 20px 22px;
-    text-align: left;
-  }
-
-  #services .row > * > div > .mb-2 {
-    margin: 0 !important;
   }
 
   #services i {
-    font-size: 30px !important;
+    font-size: 28px !important;
+  }
+
+  #services p {
+    font-size: 17px !important;
   }
 }
 
-/* Home: "Get to know us!" as a full-color band. The stops keep white text
-   at 3:1 or better for the large headline. */
-#services + .title-section {
-  color: #fff;
-  background: linear-gradient(120deg, #0062a8 0%, #0b8fb5 50%, #1c9a74 100%) !important;
+/* Home: "Get to know us!" */
+#services + .title-section .container,
+#services + .title-section .row {
+  text-align: left !important;
+  justify-content: flex-start !important;
 }
 
 #services + .title-section .btn-xl {
-  margin: 6px 4px;
-  color: #0062a8;
-  background-color: #fff;
-  border-color: #fff;
-}
-
-#services + .title-section .btn-xl:hover {
-  color: #0062a8;
-  background-color: rgba(255, 255, 255, 0.88);
-  border-color: transparent;
+  margin: 8px 8px 0 0;
 }
 
 
-/* Get Involved: photo with a frosted card over it */
+/* Get Involved: photo with a solid panel over it */
 
-/* Soft color glows behind the photo, which the frosted card then blurs */
 .cta {
   padding: var(--section-space) 0;
-  background:
-    radial-gradient(40% 50% at 12% 35%, color-mix(in srgb, var(--page-from) 35%, transparent), transparent 70%),
-    radial-gradient(40% 50% at 88% 70%, color-mix(in srgb, var(--page-to) 35%, transparent), transparent 70%);
 }
 
 .intro .intro-img {
@@ -842,20 +841,15 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   box-shadow: none !important;
 }
 
-/* Glass needs an edge and a top highlight to read as a physical pane */
 .cta .cta-inner {
   margin: 0;
-  padding: clamp(32px, 4vw, 56px) !important;
+  padding: clamp(32px, 4vw, 52px) !important;
   color: var(--text);
-  background-color: var(--glass-bg) !important;
-  -webkit-backdrop-filter: saturate(180%) blur(30px);
-  backdrop-filter: saturate(180%) blur(30px);
-  border: 1px solid var(--glass-edge);
+  text-align: left !important;
+  background-color: var(--surface) !important;
+  border: 1px solid var(--hairline);
   border-radius: var(--radius) !important;
-  box-shadow:
-    inset 0 1px 0 var(--glass-edge),
-    0 1px 2px rgba(var(--shadow-rgb), 0.06),
-    0 24px 60px rgba(var(--shadow-rgb), 0.14);
+  box-shadow: 0 2px 6px rgba(var(--shadow-rgb), 0.18), 0 30px 70px rgba(var(--shadow-rgb), 0.35);
 }
 
 .cta .cta-inner::before {
@@ -863,18 +857,20 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 .cta .cta-inner h3 {
-  font-size: clamp(26px, 2.6vw, 34px);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 3.4vw, 48px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.005em;
 }
 
 /* The second heading sets font-size inline */
 .cta .cta-inner h3 + br + h3 {
   margin-bottom: 16px;
-  font-size: 21px !important;
+  font-family: var(--font-text);
+  font-size: 20px !important;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
@@ -882,10 +878,11 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   color: var(--text-secondary);
 }
 
+/* .mx-auto carries !important */
 .intro .intro-text .intro-button {
   position: static;
   width: auto;
-  margin-top: 28px;
+  margin: 28px 0 0 !important;
 }
 
 @media (min-width: 992px) {
@@ -893,7 +890,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
     width: 72%;
   }
 
-  /* The card sets margin-top inline */
+  /* The panel sets margin-top inline */
   .intro .intro-text {
     top: 4rem;
     width: 48%;
@@ -908,25 +905,23 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 
-/* History timeline */
+/* History timeline: the years are a real sequence, so they get the big type */
 
 .timeline::before {
   width: 2px;
   margin-left: -1px;
-  background: linear-gradient(180deg, var(--page-from), var(--page-to));
-  opacity: 0.6;
+  background-color: var(--hairline);
 }
 
 .timeline > li .timeline-image {
   overflow: hidden;
-  color: #fff;
-  background: var(--tile-bg);
+  color: var(--on-accent);
+  background: var(--surface);
   border: 0;
   box-shadow:
     0 0 0 5px var(--page-bg),
-    0 0 0 7px color-mix(in srgb, var(--page-from) 60%, transparent),
-    0 2px 4px rgba(var(--shadow-rgb), 0.08),
-    0 12px 30px rgba(var(--shadow-rgb), 0.16);
+    0 0 0 7px var(--accent),
+    0 12px 30px rgba(var(--shadow-rgb), 0.35);
 }
 
 .timeline > li .timeline-image img {
@@ -936,30 +931,32 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 .timeline > li:last-child .timeline-image {
-  background: linear-gradient(135deg, var(--page-from) 0%, var(--page-to) 100%);
+  background: var(--accent);
+}
+
+.timeline > li:last-child .timeline-image h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .timeline .timeline-heading h4 {
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 4vw, 56px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--link);
   font-variant-numeric: tabular-nums;
-}
-
-/* The years: inline-block so the gradient spans the digits */
-.timeline .timeline-heading h4:not(.subheading) {
-  display: inline-block;
-  color: var(--page-from);
-  background: linear-gradient(90deg, var(--page-from), var(--page-to));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .timeline .timeline-heading h4.subheading {
   margin-bottom: 8px;
-  font-size: 21px;
+  font-family: var(--font-text);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
   letter-spacing: -0.01em;
   color: var(--text);
   font-variant-numeric: normal;
@@ -970,31 +967,43 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 
-/* Contact cards. No hover lift: only the link inside is clickable. */
+/* Contact panels. No hover effect: only the link inside is clickable. */
 
 .card {
-  background-color: var(--tile-bg);
-  border: 0;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius);
+}
+
+.card-body {
+  text-align: left !important;
+  padding: 8px 24px;
 }
 
 .card-body hr {
   display: none;
 }
 
+/* The last row (X) is centered in the markup; keep it on the left edge */
+header.outhead + .page-section .row.justify-content-center {
+  justify-content: flex-start !important;
+}
+
 .card-body h4 {
-  margin: 8px 0 6px !important;
-  font-size: 24px;
+  margin: 14px 0 4px !important;
+  font-size: 22px;
 }
 
 .card-body .small {
-  font-size: 17px;
+  font-size: 16px;
+  /* The email address is longer than a three-column card at tablet width */
+  overflow-wrap: anywhere;
 }
 
 /* Each platform's own color. The icons carry .text-primary (!important). */
 .card-body .bi-envelope { color: var(--link) !important; }
-.card-body .bi-youtube  { color: #ff0033 !important; }
-.card-body .bi-facebook { color: #1877f2 !important; }
+.card-body .bi-youtube  { color: #ff3355 !important; }
+.card-body .bi-facebook { color: #4a90f5 !important; }
 
 .card-body :is(.bi-github, i:has(> svg)) {
   color: var(--text) !important;
@@ -1008,7 +1017,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 .card-body .bi-tiktok::before {
-  background-image: linear-gradient(135deg, #00b8c4 0%, #fe2c55 100%);
+  background-image: linear-gradient(135deg, #25e6f0 0%, #fe2c55 100%);
 }
 
 .card-body .bi-instagram::before {
@@ -1021,22 +1030,31 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 /* The counter sits in this padding, above the slide rather than on its photo.
    Padding (not the slide's margin) so the margin can't collapse past it. */
 .slideshow-container {
-  padding-top: 36px;
+  max-width: none;
+  padding: 40px var(--content-inset) 0;
 }
 
 .mySlides > .container {
+  max-width: none;
   margin-top: 0 !important;
-  padding-left: var(--gutter) !important;
-  padding-right: var(--gutter) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* The controls row centers itself inline; line it up with the slide instead */
+.slideshow-container ~ div {
+  padding: 0 var(--content-inset);
+  text-align: left !important;
 }
 
 .numbertext {
-  top: 6px;
-  left: 0;
-  right: 0;
+  top: 4px;
+  left: var(--content-inset);
   padding: 0;
-  font-size: 13px;
-  text-align: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
 }
@@ -1053,7 +1071,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   background-clip: content-box;
   border: 0;
   border-radius: 12px;
-  transition: width 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .dot:hover {
@@ -1061,8 +1079,8 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
 }
 
 .dot.active {
-  width: 24px;
-  background-color: var(--page-from);
+  width: 28px;
+  background-color: var(--accent);
 }
 
 .prev,
@@ -1077,32 +1095,29 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   font-size: 14px;
   vertical-align: middle;
   color: var(--text);
-  background-color: var(--tile-bg);
-  border: 0;
-  border-radius: 50%;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
   transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .prev:hover,
 .next:hover {
-  color: var(--text);
-  background-color: color-mix(in srgb, var(--page-from) 16%, var(--surface));
+  color: var(--on-accent);
+  background-color: var(--accent);
   text-decoration: none;
 }
 
 .prev:active,
 .next:active {
-  transform: scale(0.94);
+  transform: translateY(1px);
 }
 
 
 /* Sponsors logo carousel */
 
 .title-section > .glide {
-  max-width: 1140px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--gutter);
+  padding: 0 var(--content-inset);
 }
 
 .glide__slide > a {
@@ -1112,7 +1127,7 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   height: 180px;
   margin: 0 8px;
   /* Light in both modes so dark logos stay readable */
-  background-color: #f5f5f7;
+  background-color: #eef3f8;
   border-radius: var(--radius);
 }
 
@@ -1133,16 +1148,23 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
   margin-top: -22px;
   font-size: 18px;
   color: var(--text);
-  background-color: var(--glass-bg);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid var(--nav-hairline);
-  border-radius: 50%;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
   transition: transform 0.15s ease;
 }
 
 .slider__arrow.glide__arrow:active {
-  transform: scale(0.94);
+  transform: translateY(1px);
+}
+
+/* Sit the arrows on the ends of the logo row instead of the page edges */
+.slider__arrow--prev.glide__arrow {
+  left: calc(var(--content-inset) - 14px);
+}
+
+.slider__arrow--next.glide__arrow {
+  right: calc(var(--content-inset) - 14px);
 }
 
 
@@ -1150,44 +1172,44 @@ body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet);
    inline with !important, so these selectors are one step more specific. */
 
 #dd-container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 var(--gutter);
+  margin: 0;
+  padding: 0 var(--content-inset);
 }
 
 body #dd-container div {
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
 }
 
 body #dd-container .dtd-callout {
   background-color: var(--surface) !important;
+  border: 1px solid var(--hairline) !important;
   border-radius: var(--radius) !important;
 }
 
 body #dd-container :is(.lets-check, .mg-forms-button, .mg-guidelines-button) {
-  color: #fff !important;
+  color: var(--on-accent) !important;
   background-color: var(--accent) !important;
   border-color: var(--accent) !important;
-  border-radius: 980px !important;
+  border-radius: var(--radius) !important;
 }
 
 
 /* Footer */
 
 footer.footer {
-  padding: 24px 0 !important;
-  background-color: var(--page-bg-alt) !important;
-  border-top: 1px solid var(--nav-hairline);
+  padding: 28px 0 !important;
+  background-color: var(--footer-bg) !important;
+  border-top: 1px solid var(--hairline);
 }
 
 /* Scoped to the bar: the Credits dialog is injected into <footer> too */
 footer.footer > .container {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
 }
 
 footer.footer > .container .small {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 footer.footer > .container :is(a, button) {
@@ -1202,15 +1224,23 @@ footer.footer > .container :is(a, button):hover {
 
 /* "Credits" is a button so keyboards can reach it; make it read as a link */
 footer.footer > .container button[data-bs-toggle="modal"] {
-  padding: 0;
+  padding: 4px 0;
   font: inherit;
-  letter-spacing: inherit;
   background: none;
   border: 0;
 }
 
 footer.footer > .container i {
   font-size: 20px !important;
+}
+
+/* 36px tap targets around the 20px social icons */
+footer.footer > .container .list-inline-item a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
 }
 
 
@@ -1221,15 +1251,15 @@ footer.footer > .container i {
 }
 
 .modal-backdrop.show {
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .modal-content {
   color: var(--text);
-  background-color: var(--page-bg);
-  border: 0;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(var(--shadow-rgb), 0.08), 0 24px 80px rgba(var(--shadow-rgb), 0.25);
+  box-shadow: 0 30px 80px rgba(var(--shadow-rgb), 0.5);
 }
 
 .modal-header {
@@ -1238,21 +1268,23 @@ footer.footer > .container i {
 }
 
 .modal-title {
-  font-size: 28px;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .modal-header .btn-close {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   font-size: 13px;
   color: var(--text-secondary);
-  background-color: var(--tile-bg);
-  border-radius: 50%;
+  background-color: var(--page-bg-alt);
+  border-radius: var(--radius);
   opacity: 1;
 }
 
@@ -1262,56 +1294,58 @@ footer.footer > .container i {
 .top-bar {
   font-size: 14px;
   background-color: var(--nav-bg) !important;
-  border-bottom: 1px solid var(--nav-hairline);
+  border-bottom: 1px solid var(--hairline);
 }
 
 #login-section h2 {
   margin-bottom: 24px;
-  font-size: clamp(32px, 5vw, 48px);
-  letter-spacing: -0.025em;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 800;
+  letter-spacing: 0.005em;
+}
+
+.form-label {
+  color: var(--text-secondary);
 }
 
 .form-control {
-  padding: 12px 20px;
+  padding: 12px 16px;
   font-size: 17px;
   color: var(--text);
-  background-color: var(--surface);
+  background-color: var(--page-bg-alt);
   border: 1px solid var(--hairline);
-  border-radius: 980px;
+  border-radius: var(--radius);
 }
 
 .form-control:focus {
   color: var(--text);
-  background-color: var(--surface);
+  background-color: var(--page-bg-alt);
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 .btn-outline-secondary {
   color: var(--text-secondary);
   border-color: var(--hairline);
-  border-radius: 0 980px 980px 0;
 }
 
 #loginForm .btn-primary {
-  padding: 12px 24px;
-  font-size: 17px;
+  padding: 13px 24px;
+  font-size: 16px;
 }
 
 
-/* Scroll-in animations: shorter travel and a slower ease than the AOS defaults */
+/* Scroll-in animations: a quiet fade instead of the AOS slide, so the hero
+   intro stays the only movement that asks for attention */
 
-[data-aos="fade-up"]:not(.aos-animate) {
-  transform: translate3d(0, 32px, 0);
-}
-
-[data-aos="fade-right"]:not(.aos-animate) {
-  transform: translate3d(-32px, 0, 0);
+[data-aos^="fade"]:not(.aos-animate) {
+  transform: none;
 }
 
 body[data-aos-duration] [data-aos][data-aos] {
-  transition-duration: 900ms;
-  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition-duration: 600ms;
+  transition-timing-function: ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1329,18 +1363,10 @@ body[data-aos-duration] [data-aos][data-aos] {
   }
 }
 
-/* Solid fallbacks for people who turn transparency off */
 @media (prefers-reduced-transparency: reduce) {
   #mainNav,
   .top-bar {
     background-color: var(--page-bg) !important;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
-  .cta .cta-inner,
-  .slider__arrow.glide__arrow {
-    background-color: var(--surface) !important;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
