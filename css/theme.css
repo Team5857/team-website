@@ -25,21 +25,23 @@
   --shadow-rgb: 16, 24, 40;
   --scrollbar-thumb: rgba(0, 0, 0, 0.3);
 
-  /* Page accents. Each passes 4.5:1 against white text, so buttons can use them. */
-  --blue: #0077b6;
-  --teal: #0b7a7e;
-  --green: #0f7d4a;
-  --orange: #c24e0a;
-  --rose: #c8325b;
-  /* Brighter versions for accent-colored text on dark backgrounds */
-  --blue-bright: #5ec4e8;
-  --teal-bright: #5fd4cf;
-  --green-bright: #4cd68a;
-  --orange-bright: #ff9f5a;
-  --rose-bright: #ff7a9a;
+  /* Buttons, links and focus rings stay the same blue on every page */
+  --accent: #0077b6;
+  --link: #0077b6;
 
-  --tint-amount: 7%;
-  --band-tint-amount: 4%;
+  /* Gradient palette. Light-mode stops are dark enough for 3:1 contrast as
+     large text on white. */
+  --blue: #0077b6;
+  --sky: #0a9fc0;
+  --violet: #5e5ce6;
+  --purple: #a742d9;
+  --green: #1f9d55;
+  --pink: #e8336b;
+  --orange: #f56300;
+  --amber: #b77f00;
+
+  --tint-amount: 8%;
+  --band-tint-amount: 5%;
 
   --nav-height: 52px;
   --gutter: 22px;
@@ -69,32 +71,38 @@
     --glass-edge: rgba(255, 255, 255, 0.1);
     --shadow-rgb: 0, 0, 0;
     --scrollbar-thumb: rgba(255, 255, 255, 0.3);
-    --tint-amount: 16%;
-    --band-tint-amount: 8%;
+    --link: #5ec4e8;
+    --blue: #3ba7e6;
+    --sky: #5ed3f3;
+    --violet: #8e8cff;
+    --purple: #da8fff;
+    --green: #30d158;
+    --pink: #ff6482;
+    --orange: #ff9f0a;
+    --amber: #ffd60a;
+    --tint-amount: 20%;
+    --band-tint-amount: 10%;
     --bs-light-rgb: 22, 22, 23;
   }
 }
 
 
-/* One accent per page. Its title, links, buttons and tints all use it. */
+/* Each page gets its own color pair, the way Apple gives each product one.
+   Titles, tiles and bands below read these. */
 
-body                         { --accent: var(--blue);   --accent-bright: var(--blue-bright); }
-body:has(> header.wearehead) { --accent: var(--teal);   --accent-bright: var(--teal-bright); }
-body:has(> header.hhead)     { --accent: var(--orange); --accent-bright: var(--orange-bright); }
-body:has(> header.signhead)  { --accent: var(--green);  --accent-bright: var(--green-bright); }
-body:has(> header.conhead)   { --accent: var(--rose);   --accent-bright: var(--rose-bright); }
-body:has(> header.sponhead)  { --accent: var(--teal);   --accent-bright: var(--teal-bright); }
+body                         { --page-from: var(--blue);   --page-to: var(--sky); }
+body:has(> header.abouthead) { --page-from: var(--blue);   --page-to: var(--purple); }
+body:has(> header.wearehead) { --page-from: var(--violet); --page-to: var(--purple); }
+body:has(> header.dvhead)    { --page-from: var(--blue);   --page-to: var(--sky); }
+body:has(> header.hhead)     { --page-from: var(--orange); --page-to: var(--pink); }
+body:has(> header.signhead)  { --page-from: var(--green);  --page-to: var(--sky); }
+body:has(> header.conhead)   { --page-from: var(--pink);   --page-to: var(--purple); }
+body:has(> header.outhead)   { --page-from: var(--blue);   --page-to: var(--violet); }
+body:has(> header.sponhead)  { --page-from: var(--orange); --page-to: var(--amber); }
 
-/* Declared on body rather than :root so they resolve against the page's accent */
+/* Declared on body rather than :root so it resolves against the page's colors */
 body {
-  --link: var(--accent);
-  --tile-bg: color-mix(in srgb, var(--accent) var(--tint-amount), var(--surface));
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    --link: var(--accent-bright);
-  }
+  --tile-bg: color-mix(in srgb, var(--page-from) var(--tint-amount), var(--surface));
 }
 
 
@@ -341,6 +349,10 @@ header.masthead h1 {
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.025em;
+  background: linear-gradient(90deg, #ffffff 0%, #bfe6f2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 header.masthead p.text-white-75 {
@@ -353,7 +365,7 @@ header.masthead p.text-white-75 {
 }
 
 
-/* Page headers: title in the page accent, then a full-bleed photo */
+/* Page headers: title in the page's gradient, then a full-bleed photo */
 
 header.abouthead { --hero-image: url("/assets/img/newimg/heros/about.webp"); }
 header.wearehead { --hero-image: url("/assets/img/newimg/heros/whoarewe.webp"); }
@@ -374,12 +386,19 @@ header.sponhead  { --hero-image: url("/assets/img/newimg/heros/sponsors.webp"); 
 
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
     header.signhead, header.conhead, header.outhead, header.sponhead) h1 {
+  /* inline-block so the gradient spans the words, not the whole column */
+  display: inline-block;
   margin: 0;
+  padding-bottom: 0.08em;
   font-size: clamp(40px, 5vw, 64px);
   font-weight: 600;
   line-height: 1.07;
   letter-spacing: -0.025em;
-  color: var(--link) !important;
+  color: var(--text) !important;
+  background: linear-gradient(90deg, var(--page-from), var(--page-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 :is(header.abouthead, header.wearehead, header.dvhead, header.hhead,
@@ -391,10 +410,14 @@ header.sponhead  { --hero-image: url("/assets/img/newimg/heros/sponsors.webp"); 
     header.signhead, header.conhead, header.outhead, header.sponhead)::after {
   content: "";
   display: block;
+  /* Explicit width: without it, max-height shrinks the width through the
+     aspect ratio and the photo sits left of center on wide screens */
+  width: 100%;
   margin-top: clamp(32px, 4vw, 48px);
   aspect-ratio: 21 / 9;
   max-height: 70vh;
   background: var(--hero-image) center / cover no-repeat;
+  box-shadow: 0 40px 80px -40px color-mix(in srgb, var(--page-from) 55%, transparent);
 }
 
 @media (max-width: 767.98px) {
@@ -421,9 +444,9 @@ header.outhead + .page-section {
   padding: var(--section-space) 0;
 }
 
-/* Gray bands pick up a hint of the page accent; the footer stays neutral */
+/* Gray bands pick up a hint of the page color; the footer stays neutral */
 section.bg-light {
-  background-color: color-mix(in srgb, var(--accent) var(--band-tint-amount), var(--page-bg-alt)) !important;
+  background-color: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--band-tint-amount), var(--page-bg-alt)) !important;
 }
 
 .title-section > h2,
@@ -490,10 +513,18 @@ section.bg-light {
   --bs-gutter-x: 0;
   margin: 0 0 24px !important;
   align-items: stretch !important;
-  background: var(--tile-bg);
+  background: color-mix(in srgb, var(--tile-color, var(--page-from)) var(--tint-amount), var(--surface));
   border-radius: var(--radius);
   overflow: hidden;
 }
+
+/* The About tiles take the color of the page each one links to */
+body:has(> header.abouthead) .projects-section:nth-of-type(1) { --tile-color: var(--violet); }
+body:has(> header.abouthead) .projects-section:nth-of-type(2) { --tile-color: var(--blue); }
+body:has(> header.abouthead) .projects-section:nth-of-type(3) { --tile-color: var(--orange); }
+
+/* Divisions: Engineering stays blue, Business gets its own color */
+body:has(> header.dvhead) .title-section.bg-light { --tile-color: var(--violet); }
 
 /* divisions and outreach wrap their columns in a second .row */
 :is(.projects-section > .container > .row,
@@ -682,8 +713,8 @@ section.bg-light {
 }
 
 
-/* Home: "We do way more than just robotics" as a 2 + 3 grid. The first
-   tile carries the accent at full strength; the rest are tinted. */
+/* Home: "We do way more than just robotics" as a 2 + 3 grid, each tile in
+   its own color. */
 
 #services .row {
   display: grid;
@@ -712,17 +743,20 @@ section.bg-light {
   height: 100%;
   margin: 0 !important;
   padding: 36px 24px;
-  background: var(--tile-bg);
+  background: color-mix(in srgb, var(--tile-color) var(--tint-amount), var(--surface));
   border-radius: var(--radius);
 }
 
-#services .row > :first-child > div {
-  background: var(--accent);
-}
+#services .row > :nth-child(1) { --tile-color: var(--blue); }
+#services .row > :nth-child(2) { --tile-color: var(--violet); }
+#services .row > :nth-child(3) { --tile-color: var(--green); }
+#services .row > :nth-child(4) { --tile-color: var(--pink); }
+#services .row > :nth-child(5) { --tile-color: var(--orange); }
 
 #services i {
   font-size: 40px !important;
   line-height: 1;
+  color: var(--tile-color) !important;
 }
 
 /* The paragraphs set font-size inline */
@@ -732,10 +766,6 @@ section.bg-light {
   line-height: 1.3;
   letter-spacing: -0.015em;
   color: var(--text) !important;
-}
-
-#services .row > :first-child :is(i, p) {
-  color: #fff !important;
 }
 
 @media (max-width: 991.98px) {
@@ -774,21 +804,22 @@ section.bg-light {
   }
 }
 
-/* Home: "Get to know us!" as a solid accent band */
+/* Home: "Get to know us!" as a full-color band. The stops keep white text
+   at 3:1 or better for the large headline. */
 #services + .title-section {
   color: #fff;
-  background: var(--accent) !important;
+  background: linear-gradient(120deg, #0062a8 0%, #0b8fb5 50%, #1c9a74 100%) !important;
 }
 
 #services + .title-section .btn-xl {
   margin: 6px 4px;
-  color: var(--accent);
+  color: #0062a8;
   background-color: #fff;
   border-color: #fff;
 }
 
 #services + .title-section .btn-xl:hover {
-  color: var(--accent);
+  color: #0062a8;
   background-color: rgba(255, 255, 255, 0.88);
   border-color: transparent;
 }
@@ -796,8 +827,12 @@ section.bg-light {
 
 /* Get Involved: photo with a frosted card over it */
 
+/* Soft color glows behind the photo, which the frosted card then blurs */
 .cta {
   padding: var(--section-space) 0;
+  background:
+    radial-gradient(40% 50% at 12% 35%, color-mix(in srgb, var(--page-from) 35%, transparent), transparent 70%),
+    radial-gradient(40% 50% at 88% 70%, color-mix(in srgb, var(--page-to) 35%, transparent), transparent 70%);
 }
 
 .intro .intro-img {
@@ -878,7 +913,8 @@ section.bg-light {
 .timeline::before {
   width: 2px;
   margin-left: -1px;
-  background: color-mix(in srgb, var(--accent) 45%, transparent);
+  background: linear-gradient(180deg, var(--page-from), var(--page-to));
+  opacity: 0.6;
 }
 
 .timeline > li .timeline-image {
@@ -888,7 +924,7 @@ section.bg-light {
   border: 0;
   box-shadow:
     0 0 0 5px var(--page-bg),
-    0 0 0 7px color-mix(in srgb, var(--accent) 55%, transparent),
+    0 0 0 7px color-mix(in srgb, var(--page-from) 60%, transparent),
     0 2px 4px rgba(var(--shadow-rgb), 0.08),
     0 12px 30px rgba(var(--shadow-rgb), 0.16);
 }
@@ -900,7 +936,7 @@ section.bg-light {
 }
 
 .timeline > li:last-child .timeline-image {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--page-from) 0%, var(--page-to) 100%);
 }
 
 .timeline .timeline-heading h4 {
@@ -908,8 +944,17 @@ section.bg-light {
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--link);
   font-variant-numeric: tabular-nums;
+}
+
+/* The years: inline-block so the gradient spans the digits */
+.timeline .timeline-heading h4:not(.subheading) {
+  display: inline-block;
+  color: var(--page-from);
+  background: linear-gradient(90deg, var(--page-from), var(--page-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .timeline .timeline-heading h4.subheading {
@@ -1017,7 +1062,7 @@ section.bg-light {
 
 .dot.active {
   width: 24px;
-  background-color: var(--link);
+  background-color: var(--page-from);
 }
 
 .prev,
@@ -1041,7 +1086,7 @@ section.bg-light {
 .prev:hover,
 .next:hover {
   color: var(--text);
-  background-color: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  background-color: color-mix(in srgb, var(--page-from) 16%, var(--surface));
   text-decoration: none;
 }
 
